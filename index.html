@@ -328,28 +328,14 @@
     /* 二级三级页面通用模糊背景（除相机和地图外） */
     .page-blur-bg {
       background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80') center/cover no-repeat;
+    }
+    .page-blur-bg > *:first-child {
       position: relative;
-    }
-    .page-blur-bg::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: inherit;
-      filter: blur(20px);
-      transform: scale(1.1);
-      z-index: 0;
-    }
-    .page-blur-bg::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
       z-index: 1;
-    }
-    .page-blur-bg > * {
-      position: relative;
-      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
     }
 
     /* Home 页面轮播 - 3卡片布局，大卡片风格 */
