@@ -327,7 +327,7 @@
 
     /* 二级三级页面通用模糊背景（除相机和地图外） */
     .page-blur-bg {
-      background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80') center/cover no-repeat;
     }
     .page-blur-bg > *:first-child {
       position: relative;
@@ -1673,8 +1673,18 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 16px rgba(255, 200, 0, 0.4);
     }
-    .chat-speak-btn:active {
+    .chat-speak-btn:active, .chat-speak-btn.recording {
       transform: translateY(0);
+      background: linear-gradient(180deg, #EF4444 0%, #DC2626 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
+    .chat-speak-btn.recording .chat-speak-icon {
+      animation: pulse-mic 0.8s ease-in-out infinite;
+    }
+    @keyframes pulse-mic {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     /* ============ General Chat 通用聊天页 ============ */
@@ -1764,8 +1774,14 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 18px rgba(255, 200, 0, 0.45);
     }
-    .general-chat-speak-btn:active {
+    .general-chat-speak-btn:active, .general-chat-speak-btn.recording {
       transform: translateY(0);
+      background: linear-gradient(180deg, #EF4444 0%, #DC2626 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
+    .general-chat-speak-btn.recording .chat-speak-icon {
+      animation: pulse-mic 0.8s ease-in-out infinite;
     }
 
     /* ============ Map 地图页 ============ */
@@ -1777,7 +1793,7 @@
       width: 100%;
       height: 100%;
       /* 藏宝图背景图片 */
-      background: url('treasure-map.png') center/cover no-repeat;
+      background: url('icons/treasure-map.png') center/cover no-repeat;
       position: relative;
       overflow: hidden;
     }
@@ -2202,6 +2218,37 @@
       z-index: 20;
     }
 
+    /* 已选照片缩略图 */
+    .effect-selected-photo {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 6px 12px 6px 6px;
+      border-radius: 20px;
+      z-index: 20;
+    }
+    .effect-photo-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    .effect-photo-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .effect-photo-label {
+      font-size: 12px;
+      color: white;
+      font-weight: 500;
+    }
+
     /* 风格卡片滚动容器 */
     .effect-cards-scroll {
       width: 100%;
@@ -2217,6 +2264,17 @@
 
     .effect-cards-scroll::-webkit-scrollbar {
       display: none;
+    }
+
+    /* 风格选择页底部 */
+    .effect-footer {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
     }
 
     /* 单张风格卡片 */
@@ -2288,7 +2346,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 50px 20px 16px;
+      padding: 56px 20px 16px;
       position: relative;
     }
 
@@ -2426,6 +2484,116 @@
       color: #888;
       cursor: not-allowed;
       box-shadow: none;
+    }
+
+    /* ============ AIGC Result 生成结果页 ============ */
+    #aigc-result-page {
+      background: #000;
+    }
+    .aigc-result-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .aigc-result-back-btn {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+    .aigc-result-image-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .aigc-result-fullimg, .aigc-original-fullimg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.2s ease;
+    }
+    .aigc-result-fullimg {
+      z-index: 2;
+      opacity: 1;
+    }
+    .aigc-original-fullimg {
+      z-index: 1;
+      opacity: 0;
+    }
+    .aigc-result-style-tag {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+    .aigc-result-actions-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    .aigc-action-btn {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .aigc-action-btn.compare {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+    .aigc-action-btn.compare:active {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    .aigc-action-btn.save {
+      background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+      color: #5D4E3A;
+      box-shadow: 0 4px 12px rgba(255, 200, 0, 0.3);
+    }
+    .aigc-action-btn.save:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 200, 0, 0.4);
     }
 
     /* ============ AIGC 生成弹窗 ============ */
@@ -2988,6 +3156,696 @@
       line-height: 1.45;
     }
 
+    /* ============ Explorer 探险家中心页 ============ */
+    #explorer-page {
+      /* 使用page-blur-bg统一背景 */
+    }
+
+    .explorer-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 16px 16px;
+      gap: 12px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .explorer-back-btn {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    /* 身份卡 */
+    .explorer-identity-card {
+      background: linear-gradient(135deg, #FFF8E7 0%, #FDF5E6 100%);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .explorer-profile {
+      display: flex;
+      gap: 16px;
+    }
+
+    .explorer-avatar-large {
+      position: relative;
+    }
+
+    .avatar-frame {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .avatar-frame.gold {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      box-shadow: 0 0 0 3px #FFD700, 0 4px 12px rgba(255,165,0,0.4);
+    }
+
+    .avatar-streak {
+      position: absolute;
+      bottom: -4px;
+      right: -8px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .explorer-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .explorer-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #8B5A2B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .explorer-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .explorer-level-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .level-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+
+    .level-xp {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .xp-progress-bar {
+      height: 8px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .xp-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .today-xp {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .today-xp-label {
+      font-size: 9px;
+      opacity: 0.9;
+    }
+
+    .today-xp-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* 统计数据 */
+    .explorer-stats {
+      display: flex;
+      gap: 8px;
+    }
+
+    .stat-item {
+      flex: 1;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+      border-radius: 14px;
+      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .stat-icon {
+      font-size: 20px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    /* 徽章展示 */
+    .explorer-badges-section {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .see-all-btn {
+      background: none;
+      border: none;
+      font-size: 12px;
+      color: #8B5A2B;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .badges-showcase {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .badges-showcase::-webkit-scrollbar {
+      display: none;
+    }
+
+    .badge-item {
+      flex: 0 0 80px;
+      background: linear-gradient(180deg, #F5F5F5 0%, #E8E8E8 100%);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+    }
+
+    .badge-item.earned {
+      background: linear-gradient(180deg, #FFF8E7 0%, #FFE4B5 100%);
+    }
+
+    .badge-item.new::after {
+      content: 'NEW';
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #EF4444;
+      color: white;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 6px;
+    }
+
+    .badge-item.locked {
+      opacity: 0.6;
+    }
+
+    .badge-icon {
+      font-size: 28px;
+    }
+
+    .badge-item .badge-name {
+      font-size: 9px;
+      font-weight: 600;
+      color: #555;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .badge-rarity {
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .badge-rarity.common {
+      background: #C0C0C0;
+      color: white;
+    }
+
+    .badge-rarity.rare {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+    }
+
+    .badge-rarity.epic {
+      background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+      color: white;
+    }
+
+    .badge-progress {
+      font-size: 9px;
+      font-weight: 600;
+      color: #888;
+    }
+
+    /* 下一个目标 */
+    .next-goal-section {
+      margin-top: auto;
+    }
+
+    .next-goal-card {
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+    }
+
+    .goal-icon {
+      font-size: 32px;
+    }
+
+    .goal-info {
+      flex: 1;
+    }
+
+    .goal-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .goal-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 2px;
+    }
+
+    .goal-arrow {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ============ Level Guide 升级指南页 ============ */
+    #level-guide-page {
+      /* 使用page-blur-bg统一背景 */
+    }
+
+    .level-guide-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 16px 16px;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .level-guide-back-btn {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    .level-guide-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* 等级进度线 */
+    .level-timeline {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 20px 12px 24px;
+      position: relative;
+    }
+
+    .timeline-track {
+      height: 6px;
+      background: #E5E7EB;
+      border-radius: 3px;
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      top: 29px;
+    }
+
+    .timeline-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+      border-radius: 3px;
+    }
+
+    .timeline-nodes {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-node {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #E5E7EB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .timeline-node.completed {
+      background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    }
+
+    .timeline-node.current {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4);
+    }
+
+    .timeline-node.legendary-node {
+      background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+    }
+
+    .node-level {
+      font-size: 10px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .timeline-node:not(.completed):not(.current):not(.legendary-node) .node-level {
+      color: #9CA3AF;
+    }
+
+    .node-you {
+      position: absolute;
+      bottom: -14px;
+      font-size: 8px;
+      font-weight: 700;
+      color: #F59E0B;
+      white-space: nowrap;
+    }
+
+    /* 等级列表 */
+    .level-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .level-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 12px;
+      border-left: 4px solid #E5E7EB;
+    }
+
+    .level-card.completed {
+      border-left-color: #4CAF50;
+      opacity: 0.7;
+    }
+
+    .level-card.current {
+      border-left-color: #FFD700;
+      background: linear-gradient(135deg, #FFFEF0 0%, #FFF8DC 100%);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+
+    .level-card.next {
+      border-left-color: #667EEA;
+      background: linear-gradient(135deg, #F0F4FF 0%, #E8EDFF 100%);
+    }
+
+    .level-card.locked {
+      opacity: 0.5;
+    }
+
+    .level-card.legendary {
+      border-left-color: #A855F7;
+      background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%);
+    }
+
+    .level-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .level-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #666;
+    }
+
+    .level-name {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .level-status {
+      font-size: 12px;
+    }
+
+    .level-status.current-badge {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    .level-status.next-badge {
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    .level-unlocks {
+      margin-top: 8px;
+    }
+
+    .unlock-category {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .unlock-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    /* AI角色 - 紫色 */
+    .unlock-tag.ai {
+      background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%);
+      color: #7C3AED;
+    }
+
+    /* 画风 - 橙色 */
+    .unlock-tag.style {
+      background: linear-gradient(135deg, #FED7AA 0%, #FDBA74 100%);
+      color: #C2410C;
+    }
+
+    /* 头像框 - 金色 */
+    .unlock-tag.frame {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      color: #B45309;
+    }
+
+    /* 称号 - 绿色 */
+    .unlock-tag.title {
+      background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+      color: #047857;
+    }
+
+    /* 功能 - 蓝色 */
+    .unlock-tag.feature {
+      background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+      color: #1D4ED8;
+    }
+
+    /* 贴纸 - 粉色 */
+    .unlock-tag.sticker {
+      background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%);
+      color: #BE185D;
+    }
+
+    /* 高亮（下一级重点） */
+    .unlock-tag.highlight {
+      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.4);
+      animation: tag-pulse 2s infinite;
+    }
+
+    @keyframes tag-pulse {
+      0%, 100% { box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2); }
+    }
+
+    /* 传说级 - 彩虹渐变 */
+    .unlock-tag.legendary {
+      background: linear-gradient(135deg, #FFD700 0%, #FF6B6B 25%, #A855F7 50%, #3B82F6 75%, #10B981 100%);
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .level-progress-info {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .mini-progress {
+      height: 4px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    .mini-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+      border-radius: 2px;
+    }
+
+    .level-xp-need {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #667EEA;
+      font-weight: 600;
+    }
+
+    /* XP获取指南 */
+    .xp-guide-section {
+      background: rgba(255,255,255,0.95);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 4px;
+    }
+
+    .xp-guide-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #5D4E3A;
+      margin-bottom: 10px;
+    }
+
+    .xp-guide-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .xp-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .xp-item:last-child {
+      border-bottom: none;
+    }
+
+    .xp-action {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .xp-value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+
     /* ============ Settings 设置页 ============ */
     #settings-page {
       /* 使用page-blur-bg统一背景 */
@@ -3213,10 +4071,22 @@
           <span class="icon">📷</span>
           <span>工坊选图</span>
         </div>
+        <div class="page-list-item" onclick="navigateTo('aigc-result-page')">
+          <span class="icon">🖼️</span>
+          <span>生成结果</span>
+        </div>
       </div>
       
       <div class="page-list-section">
         <div class="page-list-section-title">收藏</div>
+        <div class="page-list-item" onclick="navigateTo('explorer-page')">
+          <span class="icon">🧭</span>
+          <span>探险家</span>
+        </div>
+        <div class="page-list-item" onclick="navigateTo('level-guide-page')">
+          <span class="icon">📈</span>
+          <span>升级指南</span>
+        </div>
         <div class="page-list-item" onclick="navigateTo('backpack-page')">
           <span class="icon">🎒</span>
           <span>背包</span>
@@ -3263,15 +4133,19 @@
               <div class="card-icon"><img src="icons/Map.png" alt="Map"></div>
               <div class="card-label">Map</div>
             </div>
-            <div class="card" data-page="workshop-page" onclick="handleCardClick(2)">
+            <div class="card" data-page="explorer-page" onclick="handleCardClick(2)">
+              <div class="card-icon"><img src="icons/Explorer.png" alt="Explorer"></div>
+              <div class="card-label">Explorer</div>
+            </div>
+            <div class="card" data-page="workshop-page" onclick="handleCardClick(3)">
               <div class="card-icon"><img src="icons/Workshop.png" alt="Workshop"></div>
               <div class="card-label">Workshop</div>
             </div>
-            <div class="card" data-page="backpack-page" onclick="handleCardClick(3)">
+            <div class="card" data-page="backpack-page" onclick="handleCardClick(4)">
               <div class="card-icon"><img src="icons/Backpack.png" alt="Backpack"></div>
               <div class="card-label">Backpack</div>
             </div>
-            <div class="card" data-page="settings-page" onclick="handleCardClick(4)">
+            <div class="card" data-page="settings-page" onclick="handleCardClick(5)">
               <div class="card-icon"><img src="icons/Settings.png" alt="Settings"></div>
               <div class="card-label">Settings</div>
             </div>
@@ -3389,9 +4263,9 @@
 
               <!-- 底部输入 -->
               <div class="chat-input-area">
-                <button class="chat-speak-btn">
-                  <span>🎤</span>
-                  <span>Hold to Speak</span>
+                <button class="chat-speak-btn" id="chat-speak-btn" onmousedown="startChatRecording('chat')" onmouseup="stopChatRecording('chat')" ontouchstart="startChatRecording('chat')" ontouchend="stopChatRecording('chat')">
+                  <span class="chat-speak-icon">🎤</span>
+                  <span class="chat-speak-text">Hold to Speak</span>
                 </button>
               </div>
             </div>
@@ -3433,9 +4307,9 @@
 
             <!-- 底部输入 -->
             <div class="general-chat-input-area">
-              <button class="general-chat-speak-btn">
-                <span>🎤</span>
-                <span>Hold to Speak</span>
+              <button class="general-chat-speak-btn" id="general-chat-speak-btn" onmousedown="startChatRecording('general')" onmouseup="stopChatRecording('general')" ontouchstart="startChatRecording('general')" ontouchend="stopChatRecording('general')">
+                <span class="chat-speak-icon">🎤</span>
+                <span class="chat-speak-text">Hold to Speak</span>
               </button>
             </div>
           </div>
@@ -3566,6 +4440,14 @@
               <span>Back</span>
             </button>
 
+            <!-- 已选照片缩略图 -->
+            <div class="effect-selected-photo">
+              <div class="effect-photo-thumb">
+                <img src="https://picsum.photos/100/100?random=3" alt="Selected">
+              </div>
+              <span class="effect-photo-label">Your Photo</span>
+            </div>
+
             <!-- 风格选择 - 可滑动，一页3张 -->
             <div class="effect-cards-scroll">
               <div class="effect-card selected" onclick="selectEffectCard(this, 'Ghibli', '🏔️')">
@@ -3605,30 +4487,12 @@
               </div>
             </div>
 
-            <!-- AIGC弹窗 -->
-            <div class="aigc-modal-overlay" id="aigc-modal-overlay">
-              <div class="aigc-modal" onclick="event.stopPropagation()">
-                <div class="aigc-modal-title">✨ Creating Magic Art</div>
-                
-                <!-- 生成中 -->
-                <div class="aigc-generating" id="aigc-generating">
-                  <div class="aigc-spinner">🎨</div>
-                  <div class="aigc-progress-text">Transforming your photo...</div>
-                  <div class="aigc-progress-bar">
-                    <div class="aigc-progress-fill" id="aigc-progress" style="width: 30%;"></div>
-                  </div>
-                </div>
-
-                <!-- 生成完成 -->
-                <div class="aigc-result" id="aigc-result" style="display: none;">
-                  <div class="aigc-result-image">🌸</div>
-                  <div class="aigc-result-text">Your Ghibli artwork is ready! 🎉</div>
-                  <div class="aigc-result-actions">
-                    <button class="aigc-result-btn secondary" onclick="hideAigcModal()">Close</button>
-                    <button class="aigc-result-btn primary" onclick="saveAigcResult()">💾 Save</button>
-                  </div>
-                </div>
-              </div>
+            <!-- 底部AIGC条款 -->
+            <div class="effect-footer">
+              <label class="aigc-agreement">
+                <input type="checkbox" checked id="effect-agree-checkbox">
+                <span>I agree to AI creation terms</span>
+              </label>
             </div>
           </div>
         </div>
@@ -3672,6 +4536,41 @@
                 <span>I agree to AI creation terms</span>
               </label>
               <button class="create-btn" id="workshop-create-btn" disabled onclick="startWorkshopCreation()">✨ Start Creating</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== AIGC Result 生成结果页 ========== -->
+        <div id="aigc-result-page" class="page">
+          <div class="aigc-result-container">
+            <!-- 返回按钮 -->
+            <button class="aigc-result-back-btn" onclick="navigateTo('workshop-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+
+            <!-- 全屏图片展示 -->
+            <div class="aigc-result-image-container">
+              <img id="aigc-result-img" class="aigc-result-fullimg" src="https://picsum.photos/800/600?random=1" alt="Generated">
+              <img id="aigc-original-img" class="aigc-original-fullimg" src="https://picsum.photos/800/600?random=2" alt="Original">
+            </div>
+
+            <!-- 风格标签 -->
+            <div class="aigc-result-style-tag" id="aigc-result-style-tag">
+              <span>🏔️</span>
+              <span>Ghibli Style</span>
+            </div>
+
+            <!-- 底部操作栏 -->
+            <div class="aigc-result-actions-bar">
+              <button class="aigc-action-btn compare" onmousedown="showOriginal()" onmouseup="hideOriginal()" ontouchstart="showOriginal()" ontouchend="hideOriginal()">
+                <span>🔄</span>
+                <span>Hold to Compare</span>
+              </button>
+              <button class="aigc-action-btn save" onclick="saveAigcToGallery()">
+                <span>💾</span>
+                <span>Save to Gallery</span>
+              </button>
             </div>
           </div>
         </div>
@@ -3878,6 +4777,340 @@
           </div>
         </div>
 
+        <!-- ========== Explorer 探险家中心页 ========== -->
+        <div id="explorer-page" class="page page-blur-bg">
+          <div class="explorer-container">
+            <!-- 返回按钮 -->
+            <button class="explorer-back-btn" onclick="navigateTo('home-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+
+            <!-- 探险家身份卡 -->
+            <div class="explorer-identity-card">
+              <div class="explorer-profile">
+                <div class="explorer-avatar-large">
+                  <div class="avatar-frame gold">
+                    <span>🧒</span>
+                  </div>
+                  <div class="avatar-streak">🔥 7</div>
+                </div>
+                <div class="explorer-info">
+                  <div class="explorer-title">Nature Detective</div>
+                  <div class="explorer-name">Little Explorer</div>
+                  <div class="explorer-level-info">
+                    <span class="level-text">Level 5</span>
+                    <span class="level-xp">1,280 / 1,800 XP</span>
+                  </div>
+                  <div class="xp-progress-bar">
+                    <div class="xp-progress-fill" style="width: 71%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 今日XP获得 -->
+              <div class="today-xp">
+                <span class="today-xp-label">Today</span>
+                <span class="today-xp-value">+85 XP</span>
+              </div>
+            </div>
+
+            <!-- 统计数据 -->
+            <div class="explorer-stats">
+              <div class="stat-item">
+                <span class="stat-icon">📸</span>
+                <span class="stat-value">128</span>
+                <span class="stat-label">Photos</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">🦋</span>
+                <span class="stat-value">23</span>
+                <span class="stat-label">Species</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">🏆</span>
+                <span class="stat-value">8</span>
+                <span class="stat-label">Badges</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">✅</span>
+                <span class="stat-value">15</span>
+                <span class="stat-label">Tasks</span>
+              </div>
+            </div>
+
+            <!-- 徽章展示 -->
+            <div class="explorer-badges-section">
+              <div class="section-header">
+                <span class="section-title">🏅 Recent Badges</span>
+                <button class="see-all-btn" onclick="navigateTo('backpack-page')">See All →</button>
+              </div>
+              <div class="badges-showcase">
+                <div class="badge-item earned new">
+                  <span class="badge-icon">🌸</span>
+                  <span class="badge-name">Flower Expert</span>
+                  <span class="badge-rarity rare">Rare</span>
+                </div>
+                <div class="badge-item earned">
+                  <span class="badge-icon">📸</span>
+                  <span class="badge-name">100 Photos</span>
+                  <span class="badge-rarity common">Common</span>
+                </div>
+                <div class="badge-item earned">
+                  <span class="badge-icon">🔥</span>
+                  <span class="badge-name">7 Day Streak</span>
+                  <span class="badge-rarity epic">Epic</span>
+                </div>
+                <div class="badge-item locked">
+                  <span class="badge-icon">🦋</span>
+                  <span class="badge-name">Bug Master</span>
+                  <span class="badge-progress">12/20</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 下一个目标 -->
+            <div class="next-goal-section">
+              <div class="next-goal-card" onclick="navigateTo('level-guide-page')">
+                <div class="goal-icon">🎯</div>
+                <div class="goal-info">
+                  <div class="goal-title">Next Goal: Level 6</div>
+                  <div class="goal-desc">520 XP to unlock 🦊 Forest Fox AI</div>
+                </div>
+                <div class="goal-arrow">→</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== Level Guide 升级指南页 ========== -->
+        <div id="level-guide-page" class="page page-blur-bg">
+          <div class="level-guide-container">
+            <!-- 返回按钮 -->
+            <button class="level-guide-back-btn" onclick="navigateTo('explorer-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+
+            <div class="level-guide-title">🗺️ Level Guide</div>
+
+            <!-- 等级进度线 -->
+            <div class="level-timeline">
+              <div class="timeline-track">
+                <div class="timeline-progress" style="width: 44%;"></div>
+              </div>
+              <div class="timeline-nodes">
+                <div class="timeline-node completed"><span class="node-level">1</span></div>
+                <div class="timeline-node completed"><span class="node-level">2</span></div>
+                <div class="timeline-node completed"><span class="node-level">3</span></div>
+                <div class="timeline-node completed"><span class="node-level">4</span></div>
+                <div class="timeline-node current">
+                  <span class="node-level">5</span>
+                  <span class="node-you">YOU</span>
+                </div>
+                <div class="timeline-node"><span class="node-level">6</span></div>
+                <div class="timeline-node"><span class="node-level">7</span></div>
+                <div class="timeline-node"><span class="node-level">8</span></div>
+                <div class="timeline-node"><span class="node-level">9</span></div>
+                <div class="timeline-node legendary-node"><span class="node-level">👑</span></div>
+              </div>
+            </div>
+
+            <!-- 等级列表 -->
+            <div class="level-list">
+              <div class="level-card completed">
+                <div class="level-header">
+                  <span class="level-num">Lv.1</span>
+                  <span class="level-name">Junior Explorer</span>
+                  <span class="level-status">✓</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag feature">📷 Camera</span>
+                    <span class="unlock-tag feature">🔍 AI Recognition</span>
+                    <span class="unlock-tag feature">📖 Field Guide</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card completed">
+                <div class="level-header">
+                  <span class="level-num">Lv.2</span>
+                  <span class="level-name">Curious Kid</span>
+                  <span class="level-status">✓</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag frame">🖼️ Bronze Frame</span>
+                    <span class="unlock-tag ai">🤖 Robot Buddy</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card completed">
+                <div class="level-header">
+                  <span class="level-num">Lv.3</span>
+                  <span class="level-name">Observer</span>
+                  <span class="level-status">✓</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag ai">🧙 Wise Sprite</span>
+                    <span class="unlock-tag style">🎨 Cartoon Style</span>
+                    <span class="unlock-tag title">🏷️ "Nature Lover"</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card completed">
+                <div class="level-header">
+                  <span class="level-num">Lv.4</span>
+                  <span class="level-name">Apprentice</span>
+                  <span class="level-status">✓</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag style">💧 Watercolor</span>
+                    <span class="unlock-tag style">🖍️ Crayon</span>
+                    <span class="unlock-tag feature">🗺️ Map Tasks</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card current">
+                <div class="level-header">
+                  <span class="level-num">Lv.5</span>
+                  <span class="level-name">Nature Detective</span>
+                  <span class="level-status current-badge">NOW</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag frame">🖼️ Silver Frame</span>
+                    <span class="unlock-tag title">🏷️ Title Display</span>
+                    <span class="unlock-tag ai">🦉 Wise Owl</span>
+                    <span class="unlock-tag feature">📊 Weekly Report</span>
+                  </div>
+                </div>
+                <div class="level-progress-info">
+                  <span>1,280 / 1,800 XP</span>
+                  <div class="mini-progress"><div class="mini-fill" style="width:71%"></div></div>
+                </div>
+              </div>
+
+              <div class="level-card next">
+                <div class="level-header">
+                  <span class="level-num">Lv.6</span>
+                  <span class="level-name">Nature Scout</span>
+                  <span class="level-status next-badge">NEXT</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag ai highlight">🦊 Forest Fox</span>
+                    <span class="unlock-tag style highlight">🖌️ Oil Paint</span>
+                    <span class="unlock-tag style">✏️ Sketch</span>
+                    <span class="unlock-tag sticker">⭐ Star Stickers</span>
+                  </div>
+                </div>
+                <div class="level-xp-need">🎯 520 XP to unlock</div>
+              </div>
+
+              <div class="level-card locked">
+                <div class="level-header">
+                  <span class="level-num">Lv.7</span>
+                  <span class="level-name">Collector</span>
+                  <span class="level-status">🔒</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag style">👾 Pixel Art</span>
+                    <span class="unlock-tag ai">🐸 Frog Ranger</span>
+                    <span class="unlock-tag feature">🔬 Pro Identify</span>
+                    <span class="unlock-tag title">🏷️ "Field Expert"</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card locked">
+                <div class="level-header">
+                  <span class="level-num">Lv.8</span>
+                  <span class="level-name">Expert</span>
+                  <span class="level-status">🔒</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag frame">🖼️ Gold Frame</span>
+                    <span class="unlock-tag sticker">🌈 Rainbow Pack</span>
+                    <span class="unlock-tag style">🏔️ Ghibli</span>
+                    <span class="unlock-tag ai">🦋 Butterfly Guide</span>
+                    <span class="unlock-tag feature">🎵 Nature Sounds</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card locked">
+                <div class="level-header">
+                  <span class="level-num">Lv.9</span>
+                  <span class="level-name">Scholar</span>
+                  <span class="level-status">🔒</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag feature">📖 Expert Knowledge</span>
+                    <span class="unlock-tag ai">🧪 Dr. Science</span>
+                    <span class="unlock-tag style">🌌 Galaxy</span>
+                    <span class="unlock-tag title">🏷️ "Nature Scholar"</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-card locked legendary">
+                <div class="level-header">
+                  <span class="level-num">Lv.10</span>
+                  <span class="level-name">Legendary Explorer</span>
+                  <span class="level-status">👑</span>
+                </div>
+                <div class="level-unlocks">
+                  <div class="unlock-category">
+                    <span class="unlock-tag frame legendary">🌈 Rainbow Frame</span>
+                    <span class="unlock-tag title legendary">👑 "Legend"</span>
+                    <span class="unlock-tag ai legendary">🐉 Dragon Sage</span>
+                    <span class="unlock-tag style legendary">✨ Holographic</span>
+                    <span class="unlock-tag feature legendary">🎁 Mystery Box</span>
+                    <span class="unlock-tag feature legendary">🔓 All Unlocked</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- XP获取指南 -->
+            <div class="xp-guide-section">
+              <div class="xp-guide-title">💡 How to earn XP</div>
+              <div class="xp-guide-list">
+                <div class="xp-item">
+                  <span class="xp-action">📸 Take a photo</span>
+                  <span class="xp-value">+2 XP</span>
+                </div>
+                <div class="xp-item">
+                  <span class="xp-action">🦋 Discover new species</span>
+                  <span class="xp-value">+15 XP</span>
+                </div>
+                <div class="xp-item">
+                  <span class="xp-action">⭐ Complete daily task</span>
+                  <span class="xp-value">+10~35 XP</span>
+                </div>
+                <div class="xp-item">
+                  <span class="xp-action">🎨 Create artwork</span>
+                  <span class="xp-value">+10 XP</span>
+                </div>
+                <div class="xp-item">
+                  <span class="xp-action">🔥 Daily streak bonus</span>
+                  <span class="xp-value">+10 XP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- ========== Settings 设置页 ========== -->
         <div id="settings-page" class="page page-blur-bg">
           <div class="settings-container">
@@ -4031,6 +5264,22 @@
             </div>
           </div>
           <button class="ai-close" onclick="hideAI()">✕</button>
+        </div>
+
+        <!-- ========== 全局AIGC生成弹窗 ========== -->
+        <div class="aigc-modal-overlay" id="aigc-modal-overlay">
+          <div class="aigc-modal" onclick="event.stopPropagation()">
+            <div class="aigc-modal-title">✨ Creating Magic Art</div>
+            
+            <!-- 生成中 -->
+            <div class="aigc-generating" id="aigc-generating">
+              <div class="aigc-spinner">🎨</div>
+              <div class="aigc-progress-text">Transforming your photo...</div>
+              <div class="aigc-progress-bar">
+                <div class="aigc-progress-fill" id="aigc-progress" style="width: 30%;"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- ========== PTT 浮层 ========== -->
@@ -4333,8 +5582,10 @@
       document.querySelectorAll('.effect-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
       selectedStyle = { name, icon };
+      // 更新结果页风格标签
+      document.getElementById('aigc-result-style-tag').innerHTML = `<span>${icon}</span><span>${name} Style</span>`;
       // 显示生成弹窗
-      showAigcModal();
+      showAigcModal('effect');
     }
 
     function selectPhotoItem(item) {
@@ -4351,25 +5602,34 @@
     }
 
     function startWorkshopCreation() {
-      showAigcModal();
+      showAigcModal('workshop');
     }
 
-    function showAigcModal() {
-      document.getElementById('aigc-modal-overlay').classList.add('show');
-      document.getElementById('aigc-generating').style.display = 'block';
-      document.getElementById('aigc-result').style.display = 'none';
+    function showAigcModal(source) {
+      const overlay = document.getElementById('aigc-modal-overlay');
+      const generating = document.getElementById('aigc-generating');
+      const progressBar = document.getElementById('aigc-progress');
+      
+      if (!overlay || !generating || !progressBar) {
+        console.error('AIGC modal elements not found');
+        return;
+      }
+      
+      overlay.classList.add('show');
+      generating.style.display = 'block';
+      progressBar.style.width = '0%';
       
       // 模拟进度
       let progress = 0;
-      const progressBar = document.getElementById('aigc-progress');
       const interval = setInterval(() => {
         progress += Math.random() * 15;
         if (progress >= 100) {
           progress = 100;
           clearInterval(interval);
           setTimeout(() => {
-            document.getElementById('aigc-generating').style.display = 'none';
-            document.getElementById('aigc-result').style.display = 'block';
+            hideAigcModal();
+            // 跳转到结果页
+            navigateTo('aigc-result-page');
           }, 300);
         }
         progressBar.style.width = progress + '%';
@@ -4377,13 +5637,36 @@
     }
 
     function hideAigcModal() {
-      document.getElementById('aigc-modal-overlay').classList.remove('show');
+      const overlay = document.getElementById('aigc-modal-overlay');
+      if (overlay) {
+        overlay.classList.remove('show');
+      }
     }
 
     function saveAigcResult() {
       hideAigcModal();
       alert('Artwork saved to Backpack! 🎨');
       navigateTo('backpack-page');
+    }
+
+    // AIGC结果页函数 - 只切换图片可见性，不影响其他元素
+    function showOriginal() {
+      const resultImg = document.getElementById('aigc-result-img');
+      const originalImg = document.getElementById('aigc-original-img');
+      if (resultImg) resultImg.style.opacity = '0';
+      if (originalImg) originalImg.style.opacity = '1';
+    }
+    
+    function hideOriginal() {
+      const resultImg = document.getElementById('aigc-result-img');
+      const originalImg = document.getElementById('aigc-original-img');
+      if (resultImg) resultImg.style.opacity = '1';
+      if (originalImg) originalImg.style.opacity = '0';
+    }
+    
+    function saveAigcToGallery() {
+      alert('Artwork saved to Backpack! 🎨');
+      // 停留在当前页面，等待用户主动操作
     }
 
     // ============ 背包Tab切换 ============
@@ -4477,7 +5760,10 @@
       // 更新页面列表高亮
       document.querySelectorAll('.page-list-item').forEach(item => {
         item.classList.remove('active');
-        if (item.onclick && item.onclick.toString().includes(pageId)) {
+        // 精确匹配页面ID
+        const onclickStr = item.getAttribute('onclick') || '';
+        const match = onclickStr.match(/navigateTo\('([^']+)'\)/);
+        if (match && match[1] === pageId) {
           item.classList.add('active');
         }
       });
@@ -5141,7 +6427,53 @@
     }
 
     // PTT 浮层
+    // 聊天页内置录音功能
+    let chatRecordingTimer = null;
+    
+    function startChatRecording(type) {
+      const btn = type === 'chat' ? document.getElementById('chat-speak-btn') : document.getElementById('general-chat-speak-btn');
+      if (btn) {
+        btn.classList.add('recording');
+        const textEl = btn.querySelector('.chat-speak-text');
+        if (textEl) textEl.textContent = 'Listening...';
+      }
+    }
+    
+    function stopChatRecording(type) {
+      const btn = type === 'chat' ? document.getElementById('chat-speak-btn') : document.getElementById('general-chat-speak-btn');
+      if (btn) {
+        btn.classList.remove('recording');
+        const textEl = btn.querySelector('.chat-speak-text');
+        if (textEl) textEl.textContent = 'Hold to Speak';
+        // 模拟发送消息
+        simulateChatResponse(type);
+      }
+    }
+    
+    function simulateChatResponse(type) {
+      // 这里可以添加消息到聊天列表的逻辑
+      console.log('Chat recording finished for:', type);
+    }
+
     function togglePTT() {
+      // 如果在聊天页面，触发页面内录音而不是全局浮层
+      if (currentPage === 'chat-page') {
+        const btn = document.getElementById('chat-speak-btn');
+        if (btn && !btn.classList.contains('recording')) {
+          startChatRecording('chat');
+          setTimeout(() => stopChatRecording('chat'), 2000);
+        }
+        return;
+      }
+      if (currentPage === 'general-chat-page') {
+        const btn = document.getElementById('general-chat-speak-btn');
+        if (btn && !btn.classList.contains('recording')) {
+          startChatRecording('general');
+          setTimeout(() => stopChatRecording('general'), 2000);
+        }
+        return;
+      }
+      
       const overlay = document.getElementById('ptt-overlay');
       if (overlay.classList.contains('show')) {
         hidePTT();
