@@ -2596,6 +2596,519 @@
       box-shadow: 0 6px 16px rgba(255, 200, 0, 0.4);
     }
 
+    .aigc-action-btn.share {
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+
+    /* 照片预览页分享按钮 */
+    .preview-share-btn {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ============ 分享弹窗 ============ */
+    .share-modal-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .share-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .share-modal {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+      border-radius: 24px 24px 0 0;
+      padding: 20px;
+      width: 100%;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+    }
+    .share-modal-overlay.show .share-modal {
+      transform: translateY(0);
+    }
+
+    .share-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .share-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .share-modal-close {
+      background: rgba(0,0,0,0.1);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .share-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .share-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: white;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.2s;
+    }
+    .share-option:active {
+      transform: scale(0.98);
+      background: #F9FAFB;
+    }
+
+    .share-option-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .share-option-icon.family {
+      background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+    }
+    .share-option-icon.qr {
+      background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%);
+    }
+
+    .share-option-info {
+      flex: 1;
+    }
+
+    .share-option-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .share-option-desc {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .share-option-arrow {
+      font-size: 18px;
+      color: #CCC;
+    }
+
+    .share-privacy-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+      padding: 10px;
+      background: rgba(34, 197, 94, 0.1);
+      border-radius: 10px;
+      font-size: 11px;
+      color: #22C55E;
+    }
+
+    /* ============ QR分享卡片弹窗 ============ */
+    .qr-share-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 350;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .qr-share-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .qr-share-card {
+      background: linear-gradient(180deg, #FFFEF8 0%, #FDF5E6 100%);
+      border-radius: 20px;
+      padding: 16px;
+      width: 300px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s;
+    }
+    .qr-share-overlay.show .qr-share-card {
+      transform: scale(1);
+    }
+
+    .qr-share-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .qr-share-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .qr-card-image {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .qr-card-image img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .qr-card-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .qr-card-info {
+      text-align: center;
+    }
+
+    .qr-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .qr-card-explorer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .qr-explorer-avatar {
+      font-size: 18px;
+    }
+
+    .qr-explorer-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .qr-explorer-level {
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .qr-card-date {
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .qr-code-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 0;
+      border-top: 1px dashed #E5E7EB;
+      border-bottom: 1px dashed #E5E7EB;
+    }
+
+    .qr-code-placeholder {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .qr-code-grid {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+      gap: 2px;
+    }
+    .qr-code-grid div {
+      background: #333;
+      border-radius: 1px;
+    }
+    .qr-code-grid div:nth-child(odd) {
+      background: #333;
+    }
+    .qr-code-grid div:nth-child(even) {
+      background: transparent;
+    }
+    .qr-code-grid div:nth-child(3n) {
+      background: #333;
+    }
+
+    .qr-code-hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .qr-code-expire {
+      font-size: 10px;
+      color: #F59E0B;
+      margin-top: 4px;
+    }
+
+    .qr-card-footer {
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    .qr-card-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .qr-card-tagline {
+      font-size: 10px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    /* 探险家卡片分享样式 */
+    .qr-share-card.explorer-card {
+      background: linear-gradient(180deg, #FFF8E7 0%, #FFE4B5 100%);
+      padding: 16px;
+      position: relative;
+      max-height: 90%;
+      overflow: visible;
+    }
+
+    .explorer-card-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(139, 90, 43, 0.9);
+      border: none;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .explorer-share-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .explorer-card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #8B5A2B;
+    }
+
+    .explorer-card-avatar {
+      position: relative;
+    }
+
+    .card-avatar-frame {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 0 0 3px #FFD700, 0 4px 10px rgba(255,165,0,0.4);
+    }
+
+    .card-streak-badge {
+      position: absolute;
+      bottom: -2px;
+      right: -6px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    .explorer-card-identity {
+      text-align: center;
+    }
+
+    .card-title-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .card-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5D4E3A;
+      margin-top: 4px;
+    }
+
+    .card-level {
+      font-size: 13px;
+      color: #F59E0B;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .explorer-card-stats {
+      display: flex;
+      gap: 16px;
+      padding: 6px 0;
+    }
+
+    .card-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .card-stat-label {
+      font-size: 9px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    .explorer-card-badges {
+      display: flex;
+      gap: 6px;
+      font-size: 20px;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 10px;
+    }
+
+    .qr-share-card.explorer-card .qr-code-section {
+      padding: 8px 0;
+    }
+
+    .qr-share-card.explorer-card .qr-card-footer {
+      padding-top: 8px;
+    }
+
+    /* 分享成功提示 */
+    .share-success-toast {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 400;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+    .share-success-toast.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
     /* ============ AIGC 生成弹窗 ============ */
     .aigc-modal-overlay {
       position: absolute;
@@ -3176,6 +3689,26 @@
       position: absolute;
       top: 12px;
       left: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    .explorer-share-btn {
+      position: absolute;
+      top: 12px;
+      right: 14px;
       background: rgba(0, 0, 0, 0.4);
       border: none;
       border-radius: 18px;
@@ -4209,8 +4742,14 @@
               <span>Back</span>
             </button>
 
+            <!-- 分享按钮 -->
+            <button class="preview-share-btn" onclick="showShareModal()">
+              <span>📤</span>
+              <span>Share</span>
+            </button>
+
             <!-- 全屏照片 -->
-            <img class="preview-photo-fullscreen" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=640&h=480&fit=crop" alt="Photo">
+            <img class="preview-photo-fullscreen" src="https://picsum.photos/640/480?random=10" alt="Photo">
 
             <!-- AI提示 -->
             <div class="preview-ai-hint">✨ Press AI to explore</div>
@@ -4565,11 +5104,15 @@
             <div class="aigc-result-actions-bar">
               <button class="aigc-action-btn compare" onmousedown="showOriginal()" onmouseup="hideOriginal()" ontouchstart="showOriginal()" ontouchend="hideOriginal()">
                 <span>🔄</span>
-                <span>Hold to Compare</span>
+                <span>Compare</span>
               </button>
               <button class="aigc-action-btn save" onclick="saveAigcToGallery()">
                 <span>💾</span>
-                <span>Save to Gallery</span>
+                <span>Save</span>
+              </button>
+              <button class="aigc-action-btn share" onclick="showShareModal()">
+                <span>📤</span>
+                <span>Share</span>
               </button>
             </div>
           </div>
@@ -4784,6 +5327,12 @@
             <button class="explorer-back-btn" onclick="navigateTo('home-page')">
               <span>←</span>
               <span>Back</span>
+            </button>
+
+            <!-- 分享按钮 -->
+            <button class="explorer-share-btn" onclick="showShareModal('explorer')">
+              <span>📤</span>
+              <span>Share</span>
             </button>
 
             <!-- 探险家身份卡 -->
@@ -5282,6 +5831,171 @@
           </div>
         </div>
 
+        <!-- ========== 全局分享弹窗 ========== -->
+        <div class="share-modal-overlay" id="share-modal-overlay">
+          <div class="share-modal">
+            <div class="share-modal-header">
+              <span class="share-modal-title">📤 Share to...</span>
+              <button class="share-modal-close" onclick="hideShareModal()">✕</button>
+            </div>
+            
+            <div class="share-options">
+              <div class="share-option" onclick="shareToFamily()">
+                <div class="share-option-icon family">👨‍👩‍👧</div>
+                <div class="share-option-info">
+                  <div class="share-option-name">Family Circle</div>
+                  <div class="share-option-desc">Send to parent's app</div>
+                </div>
+                <span class="share-option-arrow">→</span>
+              </div>
+              
+              <div class="share-option" onclick="showQRShare()">
+                <div class="share-option-icon qr">🔗</div>
+                <div class="share-option-info">
+                  <div class="share-option-name">QR Code</div>
+                  <div class="share-option-desc">Share with anyone (7 days)</div>
+                </div>
+                <span class="share-option-arrow">→</span>
+              </div>
+            </div>
+
+            <div class="share-privacy-note">
+              <span>🔒</span>
+              <span>Faces auto-blurred · Location removed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== QR分享卡片弹窗 ========== -->
+        <div class="qr-share-overlay" id="qr-share-overlay">
+          <div class="qr-share-card">
+            <button class="qr-share-close" onclick="hideQRShare()">✕</button>
+            
+            <!-- 分享卡片预览 -->
+            <div class="qr-share-preview">
+              <div class="qr-card-image">
+                <img src="https://picsum.photos/200/150?random=20" alt="Shared">
+                <div class="qr-card-badge">🎨 Ghibli Style</div>
+              </div>
+              
+              <div class="qr-card-info">
+                <div class="qr-card-title">🦋 Monarch Butterfly</div>
+                <div class="qr-card-explorer">
+                  <span class="qr-explorer-avatar">🧒</span>
+                  <span class="qr-explorer-name">Little Explorer</span>
+                  <span class="qr-explorer-level">Lv.5</span>
+                </div>
+                <div class="qr-card-date">Dec 17, 2024</div>
+              </div>
+
+              <div class="qr-code-section">
+                <div class="qr-code-placeholder">
+                  <div class="qr-code-grid">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  </div>
+                </div>
+                <div class="qr-code-hint">Scan to view & save</div>
+                <div class="qr-code-expire">⏱️ Expires in 7 days</div>
+              </div>
+
+              <div class="qr-card-footer">
+                <div class="qr-card-brand">
+                  <span>🔭</span>
+                  <span>AI Explorer</span>
+                </div>
+                <div class="qr-card-tagline">The AI camera for young explorers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== 探险家卡片分享弹窗 ========== -->
+        <div class="qr-share-overlay" id="explorer-share-overlay">
+          <div class="qr-share-card explorer-card">
+            <button class="explorer-card-close" onclick="hideExplorerShare()">✕</button>
+            
+            <!-- 探险家卡片预览 -->
+            <div class="explorer-share-preview">
+              <div class="explorer-card-header">
+                <span>🏆</span>
+                <span>Explorer Card</span>
+              </div>
+              
+              <div class="explorer-card-avatar">
+                <div class="card-avatar-frame">
+                  <span>🧒</span>
+                </div>
+                <div class="card-streak-badge">🔥 7</div>
+              </div>
+
+              <div class="explorer-card-identity">
+                <div class="card-title-badge">Nature Detective</div>
+                <div class="card-name">Little Explorer</div>
+                <div class="card-level">⭐ Level 5 ⭐</div>
+              </div>
+
+              <div class="explorer-card-stats">
+                <div class="card-stat">
+                  <span class="card-stat-value">128</span>
+                  <span class="card-stat-label">Photos</span>
+                </div>
+                <div class="card-stat">
+                  <span class="card-stat-value">23</span>
+                  <span class="card-stat-label">Species</span>
+                </div>
+                <div class="card-stat">
+                  <span class="card-stat-value">8</span>
+                  <span class="card-stat-label">Badges</span>
+                </div>
+              </div>
+
+              <div class="explorer-card-badges">
+                <span>🌸</span>
+                <span>📸</span>
+                <span>🔥</span>
+                <span>🦋</span>
+                <span>⭐</span>
+              </div>
+
+              <div class="qr-code-section">
+                <div class="qr-code-placeholder">
+                  <div class="qr-code-grid">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  </div>
+                </div>
+                <div class="qr-code-hint">Scan to view my journey</div>
+                <div class="qr-code-expire">⏱️ Expires in 7 days</div>
+              </div>
+
+              <div class="qr-card-footer">
+                <div class="qr-card-brand">
+                  <span>🔭</span>
+                  <span>AI Explorer</span>
+                </div>
+                <div class="qr-card-tagline">The AI camera for young explorers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== 分享成功提示 ========== -->
+        <div class="share-success-toast" id="share-success-toast">
+          <span>✅</span>
+          <span>Sent to Family Circle!</span>
+        </div>
+
         <!-- ========== PTT 浮层 ========== -->
         <div class="ptt-overlay" id="ptt-overlay">
           <div class="ptt-header">
@@ -5667,6 +6381,45 @@
     function saveAigcToGallery() {
       alert('Artwork saved to Backpack! 🎨');
       // 停留在当前页面，等待用户主动操作
+    }
+
+    // ============ 分享功能 ============
+    let currentShareType = 'photo'; // 'photo' | 'explorer'
+
+    function showShareModal(type = 'photo') {
+      currentShareType = type;
+      document.getElementById('share-modal-overlay').classList.add('show');
+    }
+
+    function hideShareModal() {
+      document.getElementById('share-modal-overlay').classList.remove('show');
+    }
+
+    function shareToFamily() {
+      hideShareModal();
+      // 显示成功提示
+      const toast = document.getElementById('share-success-toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    function showQRShare() {
+      hideShareModal();
+      if (currentShareType === 'explorer') {
+        document.getElementById('explorer-share-overlay').classList.add('show');
+      } else {
+        document.getElementById('qr-share-overlay').classList.add('show');
+      }
+    }
+
+    function hideQRShare() {
+      document.getElementById('qr-share-overlay').classList.remove('show');
+    }
+
+    function hideExplorerShare() {
+      document.getElementById('explorer-share-overlay').classList.remove('show');
     }
 
     // ============ 背包Tab切换 ============
