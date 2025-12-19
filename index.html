@@ -405,6 +405,14 @@
       z-index: 1;
     }
 
+    /* 没有位置的卡片隐藏 */
+    .card.pos-hidden {
+      transform: translateX(0) scale(0.5);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* 点击反馈 */
     .card:active {
       transform: scale(0.95) !important;
@@ -6435,8 +6443,8 @@
     }
 
     // ============ 旋转木马状态 ============
-    let currentIndex = 2; // 默认中间是 Workshop (index 2)
-    const totalCards = 5;
+    let currentIndex = 2; // 默认中间是 Explorer (index 2)
+    const totalCards = 6;
     const positions = ['pos-far-left', 'pos-left', 'pos-center', 'pos-right', 'pos-far-right'];
     
     // 初始化旋转木马
@@ -6450,18 +6458,22 @@
       cards.forEach((card, index) => {
         // 移除所有位置类
         positions.forEach(pos => card.classList.remove(pos));
+        card.classList.remove('pos-hidden');
         
         // 计算相对位置 (-2, -1, 0, 1, 2)
         let relativePos = index - currentIndex;
         
-        // 处理循环
-        if (relativePos > 2) relativePos -= totalCards;
-        if (relativePos < -2) relativePos += totalCards;
+        // 处理循环 - 找最短路径
+        if (relativePos > totalCards / 2) relativePos -= totalCards;
+        if (relativePos < -totalCards / 2) relativePos += totalCards;
         
         // 添加对应位置类
-        const posIndex = relativePos + 2; // 转换为 0-4
-        if (posIndex >= 0 && posIndex < positions.length) {
+        if (relativePos >= -2 && relativePos <= 2) {
+          const posIndex = relativePos + 2; // 转换为 0-4
           card.classList.add(positions[posIndex]);
+        } else {
+          // 超出显示范围的卡片隐藏
+          card.classList.add('pos-hidden');
         }
       });
     }
