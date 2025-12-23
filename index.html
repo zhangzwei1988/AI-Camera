@@ -3092,6 +3092,249 @@
       padding-top: 8px;
     }
 
+    /* ============ XP飘字动画 ============ */
+    .xp-float {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFD700;
+      text-shadow: 0 2px 8px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+      z-index: 500;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .xp-float.show {
+      animation: xpFloatUp 1.5s ease-out forwards;
+    }
+    @keyframes xpFloatUp {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+      20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+      40% {
+        transform: translate(-50%, -70%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -120%) scale(0.8);
+      }
+    }
+
+    /* ============ 升级弹窗 ============ */
+    .levelup-modal-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .levelup-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .levelup-modal {
+      background: linear-gradient(180deg, #FFF8E7 0%, #FFE4B5 100%);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      width: 280px;
+      transform: scale(0.8);
+      transition: transform 0.3s;
+    }
+    .levelup-modal-overlay.show .levelup-modal {
+      transform: scale(1);
+    }
+
+    .levelup-stars {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .levelup-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #F59E0B;
+      margin-bottom: 4px;
+    }
+
+    .levelup-levels {
+      font-size: 16px;
+      color: #8B5A2B;
+      margin-bottom: 16px;
+    }
+
+    .levelup-unlocks {
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+
+    .levelup-unlocks-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .levelup-unlock-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #5D4E3A;
+      padding: 4px 0;
+    }
+
+    .levelup-btn {
+      background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+      border: none;
+      border-radius: 20px;
+      padding: 12px 40px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: #5D4E3A;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 200, 0, 0.4);
+    }
+
+    /* ============ 徽章解锁弹窗 ============ */
+    .badge-modal-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 510;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .badge-modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .badge-modal {
+      background: linear-gradient(180deg, #FFFEF8 0%, #FDF5E6 100%);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      width: 280px;
+      transform: scale(0.8);
+      transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .badge-modal-overlay.show .badge-modal {
+      transform: scale(1);
+    }
+
+    .badge-confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      font-size: 20px;
+      line-height: 1;
+      opacity: 0.6;
+      overflow: hidden;
+    }
+
+    .badge-icon-large {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 12px;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      box-shadow: 0 0 0 4px #FFD700, 0 8px 24px rgba(255,200,0,0.3);
+      animation: badgePop 0.5s ease-out;
+    }
+    @keyframes badgePop {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .badge-unlock-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F59E0B;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .badge-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .badge-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #5D4E3A;
+    }
+
+    .badge-description {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .badge-rarity {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-rarity.common { background: #E5E7EB; color: #6B7280; }
+    .badge-rarity.rare { background: linear-gradient(135deg, #DBEAFE 0%, #93C5FD 100%); color: #1D4ED8; }
+    .badge-rarity.epic { background: linear-gradient(135deg, #E9D5FF 0%, #C084FC 100%); color: #7C3AED; }
+    .badge-rarity.legendary { background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%); color: #B45309; }
+
+    .badge-btn {
+      border: none;
+      border-radius: 20px;
+      padding: 12px 40px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .badge-btn.continue {
+      background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+      color: #5D4E3A;
+      box-shadow: 0 4px 12px rgba(255, 200, 0, 0.4);
+    }
+
     /* 分享成功提示 */
     .share-success-toast {
       position: absolute;
@@ -3696,7 +3939,7 @@
     .explorer-back-btn {
       position: absolute;
       top: 12px;
-      left: 14px;
+      left: 16px;
       background: rgba(0, 0, 0, 0.4);
       border: none;
       border-radius: 18px;
@@ -3713,24 +3956,28 @@
       backdrop-filter: blur(4px);
     }
 
-    .explorer-share-btn {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      background: rgba(0, 0, 0, 0.4);
+    /* Explorer页分享卡片按钮 */
+    .explorer-share-card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px;
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
       border: none;
-      border-radius: 18px;
-      padding: 8px 14px;
+      border-radius: 14px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: white;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 20;
-      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+      transition: all 0.2s;
+    }
+    .explorer-share-card-btn:active {
+      transform: scale(0.98);
     }
 
     /* 身份卡 */
@@ -4387,6 +4634,231 @@
       color: #4CAF50;
     }
 
+    /* ============ 首页通知铃铛 ============ */
+    .home-notification-bell {
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    .home-notification-bell:active {
+      transform: scale(0.95);
+    }
+    .home-notification-bell .notification-dot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 10px;
+      height: 10px;
+      background: #EF4444;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    /* Explorer页通知按钮 */
+    .explorer-notification-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+    .explorer-notification-btn .notification-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 8px;
+      height: 8px;
+      background: #EF4444;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    /* ============ Notifications 通知列表页 ============ */
+    #notifications-page {
+      overflow: hidden;
+    }
+
+    .notifications-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 56px 16px 20px;
+      overflow-y: auto;
+    }
+
+    .notifications-back-btn {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    .notifications-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #5D4E3A;
+      margin-bottom: 16px;
+    }
+
+    .notifications-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .notifications-date-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .notifications-date {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-left: 4px;
+    }
+
+    .notification-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: white;
+      border-radius: 14px;
+      padding: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.2s;
+    }
+    .notification-item:active {
+      transform: scale(0.98);
+      background: #F9FAFB;
+    }
+    .notification-item.unread {
+      background: linear-gradient(135deg, #FFF8E7 0%, #FFFDF5 100%);
+      box-shadow: 0 2px 8px rgba(255, 200, 50, 0.2);
+    }
+    .notification-item.expanded .notification-preview {
+      display: none;
+    }
+    .notification-item.expanded .notification-full {
+      display: block;
+    }
+
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .notification-icon.parent {
+      background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+    }
+    .notification-icon.quest {
+      background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+    }
+    .notification-icon.badge {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    }
+    .notification-icon.level {
+      background: linear-gradient(135deg, #E9D5FF 0%, #DDD6FE 100%);
+    }
+    .notification-icon.system {
+      background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+    }
+
+    .notification-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .notification-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .notification-sender {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .notification-time {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .notification-preview {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .notification-full {
+      display: none;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .notification-arrow {
+      font-size: 18px;
+      color: #CCC;
+      align-self: center;
+    }
+
     /* ============ Settings 设置页 ============ */
     #settings-page {
       /* 使用page-blur-bg统一背景 */
@@ -4564,6 +5036,272 @@
       color: #5D4E3A;
       min-width: 32px;
     }
+
+    /* 设置项展开 */
+    .settings-item.expandable {
+      cursor: pointer;
+    }
+    .settings-item.expandable.expanded .settings-chevron {
+      transform: rotate(90deg);
+    }
+
+    .settings-expand-content {
+      display: none;
+      padding: 12px 16px;
+      background: #F9FAFB;
+      border-top: 1px solid #F0F0F0;
+    }
+    .settings-expand-content.show {
+      display: block;
+    }
+
+    /* Storage详情 */
+    .storage-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .storage-bar {
+      height: 8px;
+      background: #E5E7EB;
+      border-radius: 4px;
+      display: flex;
+      overflow: hidden;
+    }
+    .storage-segment {
+      height: 100%;
+    }
+    .storage-segment.photos { background: #3B82F6; }
+    .storage-segment.aigc { background: #8B5CF6; }
+    .storage-segment.system { background: #F59E0B; }
+
+    .storage-legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #666;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+    .legend-dot.photos { background: #3B82F6; }
+    .legend-dot.aigc { background: #8B5CF6; }
+    .legend-dot.system { background: #F59E0B; }
+    .legend-dot.free { background: #E5E7EB; }
+
+    /* Battery详情 */
+    .battery-detail {
+      text-align: center;
+    }
+    .battery-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .battery-icon { font-size: 24px; }
+    .battery-percent { font-size: 20px; font-weight: 700; color: #22C55E; }
+    .battery-health { font-size: 13px; color: #22C55E; }
+    .battery-info { font-size: 12px; color: #888; }
+
+    /* Device Info详情 */
+    .device-info-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .info-row span:first-child { color: #888; }
+    .info-row span:last-child { color: #5D4E3A; font-weight: 500; }
+
+    /* About详情 */
+    .about-detail {
+      text-align: center;
+      padding: 10px 0;
+    }
+    .about-logo { font-size: 40px; margin-bottom: 8px; }
+    .about-name { font-size: 18px; font-weight: 700; color: #5D4E3A; }
+    .about-version { font-size: 12px; color: #888; margin-top: 2px; }
+    .about-tagline { font-size: 11px; color: #999; margin-top: 8px; }
+    .about-copyright { font-size: 10px; color: #BBB; margin-top: 4px; }
+
+    /* 亮度滑块完整版 */
+    .brightness-slider-full {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slider-track-full {
+      flex: 1;
+      height: 8px;
+      background: #E5E7EB;
+      border-radius: 4px;
+      position: relative;
+    }
+    .slider-track-full .slider-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #60A5FA 0%, #3B82F6 100%);
+      border-radius: 4px;
+    }
+    .slider-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* ============ Settings底部弹窗 ============ */
+    .settings-sheet-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .settings-sheet-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .settings-sheet {
+      background: white;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      max-height: 70%;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .settings-sheet-overlay.show .settings-sheet {
+      transform: translateY(0);
+    }
+
+    .settings-sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: white;
+      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid #F0F0F0;
+      flex-shrink: 0;
+    }
+
+    .settings-sheet-content {
+      padding: 16px 20px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .settings-sheet-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .settings-sheet-close {
+      background: rgba(0,0,0,0.1);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .settings-sheet-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sheet-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: #F9FAFB;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sheet-option:active {
+      transform: scale(0.98);
+    }
+    .sheet-option.selected {
+      background: linear-gradient(135deg, #FFF8E7 0%, #FEF3C7 100%);
+      box-shadow: 0 0 0 2px #F59E0B;
+    }
+    .sheet-option.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .option-icon {
+      font-size: 28px;
+    }
+
+    .option-info {
+      flex: 1;
+    }
+
+    .option-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .option-desc {
+      font-size: 12px;
+      color: #888;
+      margin-top: 1px;
+    }
+
+    .option-check {
+      font-size: 16px;
+      color: #F59E0B;
+      font-weight: 700;
+      opacity: 0;
+    }
+    .sheet-option.selected .option-check {
+      opacity: 1;
+    }
+
+    .option-lock {
+      font-size: 11px;
+      color: #999;
+      background: #E5E7EB;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -4640,6 +5378,30 @@
           <span class="icon">⚙️</span>
           <span>设置</span>
         </div>
+        <div class="page-list-item" onclick="navigateTo('notifications-page')">
+          <span class="icon">🔔</span>
+          <span>通知</span>
+        </div>
+      </div>
+
+      <div class="page-list-section">
+        <div class="page-list-section-title">🎉 激励反馈演示</div>
+        <div class="page-list-item demo-item" onclick="demoXP()">
+          <span class="icon">✨</span>
+          <span>经验值 +15 XP</span>
+        </div>
+        <div class="page-list-item demo-item" onclick="demoLevelUp()">
+          <span class="icon">⭐</span>
+          <span>升级弹窗</span>
+        </div>
+        <div class="page-list-item demo-item" onclick="demoBadge()">
+          <span class="icon">🏆</span>
+          <span>徽章解锁</span>
+        </div>
+        <div class="page-list-item demo-item" onclick="demoSequence()">
+          <span class="icon">🎬</span>
+          <span>完整流程演示</span>
+        </div>
       </div>
     </div>
 
@@ -4665,6 +5427,12 @@
 
         <!-- ========== Home 页面 ========== -->
         <div id="home-page" class="page active">
+          <!-- 通知铃铛 - 有未读消息时显示 -->
+          <div class="home-notification-bell" id="home-notification-bell" onclick="navigateTo('notifications-page')">
+            <span>🔔</span>
+            <div class="notification-dot"></div>
+          </div>
+
           <div class="carousel-container" id="carousel">
             <div class="card" data-page="camera-page" onclick="handleCardClick(0)">
               <div class="card-icon"><img src="icons/Camera.png" alt="Camera"></div>
@@ -5337,10 +6105,10 @@
               <span>Back</span>
             </button>
 
-            <!-- 分享按钮 -->
-            <button class="explorer-share-btn" onclick="showShareModal('explorer')">
-              <span>📤</span>
-              <span>Share</span>
+            <!-- 通知铃铛 - 固定入口 -->
+            <button class="explorer-notification-btn" onclick="navigateTo('notifications-page')">
+              <span>🔔</span>
+              <div class="notification-dot" id="explorer-notification-dot"></div>
             </button>
 
             <!-- 探险家身份卡 -->
@@ -5436,6 +6204,12 @@
                 </div>
                 <div class="goal-arrow">→</div>
               </div>
+              
+              <!-- 分享我的成就 -->
+              <button class="explorer-share-card-btn" onclick="event.stopPropagation(); showShareModal('explorer')">
+                <span>📤</span>
+                <span>Share My Journey</span>
+              </button>
             </div>
           </div>
         </div>
@@ -5668,6 +6442,109 @@
           </div>
         </div>
 
+        <!-- ========== Notifications 通知列表页 ========== -->
+        <div id="notifications-page" class="page page-blur-bg">
+          <div class="notifications-container">
+            <button class="notifications-back-btn" onclick="goBackFromNotifications()">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+
+            <div class="notifications-header">
+              <span>🔔</span>
+              <span>Notifications</span>
+            </div>
+
+            <div class="notifications-list">
+              <!-- 今天 -->
+              <div class="notifications-date-group">
+                <div class="notifications-date">TODAY</div>
+                
+                <div class="notification-item unread" onclick="expandNotification(this)">
+                  <div class="notification-icon parent">💌</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">Mom</span>
+                      <span class="notification-time">10:30</span>
+                    </div>
+                    <div class="notification-preview">Great job today! I saw your butterfly discovery 🎉</div>
+                    <div class="notification-full">Great job today! I saw your butterfly discovery and I'm so proud of you! Keep exploring and learning new things. Love you! 🎉❤️</div>
+                  </div>
+                </div>
+
+                <div class="notification-item unread" onclick="handleNotificationClick('map-page')">
+                  <div class="notification-icon quest">🗺️</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">New Quest</span>
+                      <span class="notification-time">09:15</span>
+                    </div>
+                    <div class="notification-preview">Find 3 different types of leaves</div>
+                  </div>
+                  <span class="notification-arrow">›</span>
+                </div>
+              </div>
+
+              <!-- 昨天 -->
+              <div class="notifications-date-group">
+                <div class="notifications-date">YESTERDAY</div>
+                
+                <div class="notification-item" onclick="handleNotificationClick('backpack-page')">
+                  <div class="notification-icon badge">🏆</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">Badge Unlocked!</span>
+                      <span class="notification-time">16:42</span>
+                    </div>
+                    <div class="notification-preview">You earned "Flower Expert" 🌸</div>
+                  </div>
+                  <span class="notification-arrow">›</span>
+                </div>
+
+                <div class="notification-item" onclick="expandNotification(this)">
+                  <div class="notification-icon parent">💌</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">Dad</span>
+                      <span class="notification-time">12:20</span>
+                    </div>
+                    <div class="notification-preview">Can't wait to explore the park together this weekend!</div>
+                    <div class="notification-full">Can't wait to explore the park together this weekend! Maybe we can find some interesting insects. What do you think? 🐛🔍</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 更早 -->
+              <div class="notifications-date-group">
+                <div class="notifications-date">THIS WEEK</div>
+                
+                <div class="notification-item" onclick="handleNotificationClick('explorer-page')">
+                  <div class="notification-icon level">⭐</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">Level Up!</span>
+                      <span class="notification-time">Mon</span>
+                    </div>
+                    <div class="notification-preview">Congratulations! You reached Level 5</div>
+                  </div>
+                  <span class="notification-arrow">›</span>
+                </div>
+
+                <div class="notification-item">
+                  <div class="notification-icon system">📢</div>
+                  <div class="notification-content">
+                    <div class="notification-header">
+                      <span class="notification-sender">AI Explorer</span>
+                      <span class="notification-time">Sun</span>
+                    </div>
+                    <div class="notification-preview">New feature: Night exploration mode is here!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- ========== Settings 设置页 ========== -->
         <div id="settings-page" class="page page-blur-bg">
           <div class="settings-container">
@@ -5677,65 +6554,29 @@
             </button>
 
             <div class="settings-list">
-              <!-- 设备组 -->
+              <!-- AI组 -->
               <div class="settings-group">
-                <div class="settings-group-title">Device</div>
+                <div class="settings-group-title">AI Assistant</div>
                 <div class="settings-group-card">
-                  <div class="settings-item">
+                  <div class="settings-item" onclick="showSettingsSheet('ai-voice')">
                     <div class="settings-item-left">
-                      <div class="settings-icon blue">📶</div>
+                      <div class="settings-icon purple">🤖</div>
                       <div>
-                        <div class="settings-label">WiFi</div>
-                        <div class="settings-value">Home_Network</div>
+                        <div class="settings-label">AI Voice</div>
+                        <div class="settings-value" id="current-ai-voice">Robot</div>
                       </div>
                     </div>
                     <span class="settings-chevron">›</span>
                   </div>
-                  <div class="settings-item">
+                  <div class="settings-item" onclick="showSettingsSheet('language')">
                     <div class="settings-item-left">
-                      <div class="settings-icon green">🔋</div>
+                      <div class="settings-icon blue">🌐</div>
                       <div>
-                        <div class="settings-label">Battery</div>
-                        <div class="settings-value">87% • Healthy</div>
+                        <div class="settings-label">Language</div>
+                        <div class="settings-value" id="current-language">English</div>
                       </div>
                     </div>
                     <span class="settings-chevron">›</span>
-                  </div>
-                  <div class="settings-item">
-                    <div class="settings-item-left">
-                      <div class="settings-icon orange">💾</div>
-                      <div>
-                        <div class="settings-label">Storage</div>
-                        <div class="settings-value">12.3 GB / 32 GB</div>
-                      </div>
-                    </div>
-                    <span class="settings-chevron">›</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 显示组 -->
-              <div class="settings-group">
-                <div class="settings-group-title">Display</div>
-                <div class="settings-group-card">
-                  <div class="settings-item">
-                    <div class="settings-item-left">
-                      <div class="settings-icon purple">🔆</div>
-                      <div class="settings-label">Brightness</div>
-                    </div>
-                    <div class="settings-slider">
-                      <div class="slider-track">
-                        <div class="slider-fill" style="width: 70%;"></div>
-                      </div>
-                      <span class="slider-value">70%</span>
-                    </div>
-                  </div>
-                  <div class="settings-item">
-                    <div class="settings-item-left">
-                      <div class="settings-icon gray">🌙</div>
-                      <div class="settings-label">Dark Mode</div>
-                    </div>
-                    <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
                   </div>
                 </div>
               </div>
@@ -5744,6 +6585,13 @@
               <div class="settings-group">
                 <div class="settings-group-title">Sound</div>
                 <div class="settings-group-card">
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon orange">🎵</div>
+                      <div class="settings-label">Sound Effects</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                  </div>
                   <div class="settings-item">
                     <div class="settings-item-left">
                       <div class="settings-icon blue">🔊</div>
@@ -5756,37 +6604,202 @@
                       <span class="slider-value">50%</span>
                     </div>
                   </div>
-                  <div class="settings-item">
+                </div>
+              </div>
+
+              <!-- 显示组 -->
+              <div class="settings-group">
+                <div class="settings-group-title">Display</div>
+                <div class="settings-group-card">
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
                     <div class="settings-item-left">
-                      <div class="settings-icon orange">🎵</div>
-                      <div class="settings-label">Sound Effects</div>
+                      <div class="settings-icon purple">🔆</div>
+                      <div class="settings-label">Brightness</div>
                     </div>
-                    <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                  <div class="settings-expand-content">
+                    <div class="brightness-slider-full">
+                      <span>🌑</span>
+                      <div class="slider-track-full">
+                        <div class="slider-fill" style="width: 70%;"></div>
+                        <div class="slider-thumb" style="left: 70%;"></div>
+                      </div>
+                      <span>☀️</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- 账户组 -->
+              <!-- 设备组 -->
               <div class="settings-group">
-                <div class="settings-group-title">Account</div>
+                <div class="settings-group-title">Device</div>
                 <div class="settings-group-card">
-                  <div class="settings-item">
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
                     <div class="settings-item-left">
-                      <div class="settings-icon green">👤</div>
+                      <div class="settings-icon orange">💾</div>
                       <div>
-                        <div class="settings-label">Profile</div>
-                        <div class="settings-value">Little Explorer</div>
+                        <div class="settings-label">Storage</div>
+                        <div class="settings-value">12.3 GB / 32 GB</div>
                       </div>
                     </div>
                     <span class="settings-chevron">›</span>
                   </div>
-                  <div class="settings-item">
+                  <div class="settings-expand-content">
+                    <div class="storage-detail">
+                      <div class="storage-bar">
+                        <div class="storage-segment photos" style="width: 45%;"></div>
+                        <div class="storage-segment aigc" style="width: 25%;"></div>
+                        <div class="storage-segment system" style="width: 10%;"></div>
+                      </div>
+                      <div class="storage-legend">
+                        <div class="legend-item"><span class="legend-dot photos"></span>Photos (5.5 GB)</div>
+                        <div class="legend-item"><span class="legend-dot aigc"></span>Artworks (3.1 GB)</div>
+                        <div class="legend-item"><span class="legend-dot system"></span>System (1.2 GB)</div>
+                        <div class="legend-item"><span class="legend-dot free"></span>Free (22.2 GB)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
                     <div class="settings-item-left">
-                      <div class="settings-icon red">🔗</div>
-                      <div class="settings-label">Parent Link</div>
+                      <div class="settings-icon green">🔋</div>
+                      <div>
+                        <div class="settings-label">Battery</div>
+                        <div class="settings-value">87%</div>
+                      </div>
                     </div>
                     <span class="settings-chevron">›</span>
                   </div>
+                  <div class="settings-expand-content">
+                    <div class="battery-detail">
+                      <div class="battery-status">
+                        <span class="battery-icon">🔋</span>
+                        <span class="battery-percent">87%</span>
+                        <span class="battery-health">• Healthy</span>
+                      </div>
+                      <div class="battery-info">Estimated 4h 30min remaining</div>
+                    </div>
+                  </div>
+
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
+                    <div class="settings-item-left">
+                      <div class="settings-icon gray">ℹ️</div>
+                      <div class="settings-label">Device Info</div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                  <div class="settings-expand-content">
+                    <div class="device-info-detail">
+                      <div class="info-row"><span>Model</span><span>AI Explorer V1</span></div>
+                      <div class="info-row"><span>Serial</span><span>AEX-2024-001234</span></div>
+                      <div class="info-row"><span>Firmware</span><span>v1.2.3</span></div>
+                      <div class="info-row"><span>WiFi MAC</span><span>A1:B2:C3:D4:E5</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 关于组 -->
+              <div class="settings-group">
+                <div class="settings-group-title">About</div>
+                <div class="settings-group-card">
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
+                    <div class="settings-item-left">
+                      <div class="settings-icon blue">🔭</div>
+                      <div class="settings-label">About AI Explorer</div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                  <div class="settings-expand-content">
+                    <div class="about-detail">
+                      <div class="about-logo">🔭</div>
+                      <div class="about-name">AI Explorer</div>
+                      <div class="about-version">Version 1.0.0</div>
+                      <div class="about-tagline">The AI camera for young explorers</div>
+                      <div class="about-copyright">© 2024 AI Explorer Inc.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== Settings底部弹窗 - AI Voice ========== -->
+        <div class="settings-sheet-overlay" id="settings-sheet-overlay" onclick="hideSettingsSheet()">
+          <div class="settings-sheet" onclick="event.stopPropagation()">
+            <div class="settings-sheet-header">
+              <span class="settings-sheet-title" id="settings-sheet-title">AI Voice</span>
+              <button class="settings-sheet-close" onclick="hideSettingsSheet()">✕</button>
+            </div>
+            
+            <div class="settings-sheet-content" id="settings-sheet-content">
+              <!-- AI Voice选项 -->
+              <div class="settings-sheet-options" id="ai-voice-options">
+                <div class="sheet-option selected" onclick="selectOption('ai-voice', 'Robot', this)">
+                  <span class="option-icon">🤖</span>
+                  <div class="option-info">
+                    <div class="option-name">Robot</div>
+                    <div class="option-desc">Friendly & curious</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('ai-voice', 'Fox', this)">
+                  <span class="option-icon">🦊</span>
+                  <div class="option-info">
+                    <div class="option-name">Forest Fox</div>
+                    <div class="option-desc">Playful & adventurous</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('ai-voice', 'Owl', this)">
+                  <span class="option-icon">🦉</span>
+                  <div class="option-info">
+                    <div class="option-name">Wise Owl</div>
+                    <div class="option-desc">Calm & knowledgeable</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option locked">
+                  <span class="option-icon">🧙</span>
+                  <div class="option-info">
+                    <div class="option-name">Wizard</div>
+                    <div class="option-desc">Magical & mysterious</div>
+                  </div>
+                  <span class="option-lock">🔒 Lv.7</span>
+                </div>
+              </div>
+
+              <!-- Language选项 -->
+              <div class="settings-sheet-options" id="language-options" style="display:none;">
+                <div class="sheet-option selected" onclick="selectOption('language', 'English', this)">
+                  <span class="option-icon">🇺🇸</span>
+                  <div class="option-info">
+                    <div class="option-name">English</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('language', 'Español', this)">
+                  <span class="option-icon">🇪🇸</span>
+                  <div class="option-info">
+                    <div class="option-name">Español</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('language', 'Français', this)">
+                  <span class="option-icon">🇫🇷</span>
+                  <div class="option-info">
+                    <div class="option-name">Français</div>
+                  </div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('language', '中文', this)">
+                  <span class="option-icon">🇨🇳</span>
+                  <div class="option-info">
+                    <div class="option-name">中文</div>
+                  </div>
+                  <span class="option-check">✓</span>
                 </div>
               </div>
             </div>
@@ -6002,6 +7015,50 @@
         <div class="share-success-toast" id="share-success-toast">
           <span>✅</span>
           <span>Sent to Family Circle!</span>
+        </div>
+
+        <!-- ========== XP飘字 ========== -->
+        <div class="xp-float" id="xp-float">+15 XP ✨</div>
+
+        <!-- ========== 升级弹窗 ========== -->
+        <div class="levelup-modal-overlay" id="levelup-modal">
+          <div class="levelup-modal">
+            <div class="levelup-stars">⭐ ✨ ⭐</div>
+            <div class="levelup-title">LEVEL UP!</div>
+            <div class="levelup-levels">Level 5 → Level 6</div>
+            
+            <div class="levelup-unlocks">
+              <div class="levelup-unlocks-title">New Unlocks</div>
+              <div class="levelup-unlock-item">
+                <span>🦊</span>
+                <span>Forest Fox AI</span>
+              </div>
+              <div class="levelup-unlock-item">
+                <span>🎨</span>
+                <span>Oil Paint Style</span>
+              </div>
+            </div>
+
+            <button class="levelup-btn" onclick="hideLevelUpModal()">Awesome!</button>
+          </div>
+        </div>
+
+        <!-- ========== 徽章解锁弹窗 ========== -->
+        <div class="badge-modal-overlay" id="badge-modal">
+          <div class="badge-modal">
+            <div class="badge-confetti">✨ 🎉 ⭐ 🎊 ✨ 🎉 ⭐ 🎊 ✨</div>
+            
+            <div class="badge-icon-large">🌸</div>
+            
+            <div class="badge-unlock-title">BADGE UNLOCKED!</div>
+            <div class="badge-name-row">
+              <span class="badge-name">Flower Expert</span>
+              <span class="badge-rarity rare">⭐ RARE</span>
+            </div>
+            <div class="badge-description">"Discovered 10 different flowers"</div>
+
+            <button class="badge-btn continue" onclick="triggerBadgeClose()">Awesome!</button>
+          </div>
         </div>
 
         <!-- ========== PTT 浮层 ========== -->
@@ -6430,6 +7487,141 @@
       document.getElementById('explorer-share-overlay').classList.remove('show');
     }
 
+    // ============ 通知功能 ============
+    let previousPage = 'home-page';
+
+    function goBackFromNotifications() {
+      navigateTo(previousPage);
+    }
+
+    function expandNotification(el) {
+      el.classList.toggle('expanded');
+      el.classList.remove('unread');
+      updateNotificationDots();
+    }
+
+    function handleNotificationClick(targetPage) {
+      navigateTo(targetPage);
+      event.target.closest('.notification-item').classList.remove('unread');
+      updateNotificationDots();
+    }
+
+    function updateNotificationDots() {
+      const hasUnread = document.querySelectorAll('.notification-item.unread').length > 0;
+      const homeBell = document.getElementById('home-notification-bell');
+      const explorerDot = document.getElementById('explorer-notification-dot');
+      
+      if (homeBell) {
+        homeBell.style.display = hasUnread ? 'flex' : 'none';
+      }
+      if (explorerDot) {
+        explorerDot.style.display = hasUnread ? 'block' : 'none';
+      }
+    }
+
+    // ============ XP飘字和弹窗 ============
+    function showXPFloat(amount) {
+      const el = document.getElementById('xp-float');
+      el.textContent = `+${amount} XP ✨`;
+      el.classList.remove('show');
+      void el.offsetWidth; // 强制重绘
+      el.classList.add('show');
+      
+      setTimeout(() => {
+        el.classList.remove('show');
+      }, 1500);
+    }
+
+    function showLevelUpModal() {
+      document.getElementById('levelup-modal').classList.add('show');
+    }
+
+    function hideLevelUpModal() {
+      document.getElementById('levelup-modal').classList.remove('show');
+    }
+
+    function showBadgeModal() {
+      document.getElementById('badge-modal').classList.add('show');
+    }
+
+    function hideBadgeModal() {
+      document.getElementById('badge-modal').classList.remove('show');
+    }
+
+    // 演示：依次触发反馈队列（XP → 徽章 → 升级）
+    function demoRewardSequence() {
+      showLevelUpAfterBadge = true;
+      
+      // 1. XP飘字
+      showXPFloat(15);
+      
+      // 2. 1.5秒后显示徽章弹窗
+      setTimeout(() => {
+        showBadgeModal();
+      }, 1600);
+      
+      // 徽章弹窗关闭后显示升级弹窗（通过triggerBadgeClose触发）
+    }
+
+    // 徽章弹窗关闭后的回调
+    let showLevelUpAfterBadge = false;
+    
+    function triggerBadgeClose() {
+      hideBadgeModal();
+      if (showLevelUpAfterBadge) {
+        setTimeout(() => {
+          showLevelUpModal();
+          showLevelUpAfterBadge = false;
+        }, 300);
+      }
+    }
+
+    // ============ Settings功能 ============
+    function toggleSettingsExpand(el) {
+      const content = el.nextElementSibling;
+      const isExpanded = el.classList.contains('expanded');
+      
+      // 关闭其他展开项
+      document.querySelectorAll('.settings-item.expanded').forEach(item => {
+        item.classList.remove('expanded');
+        item.nextElementSibling.classList.remove('show');
+      });
+      
+      if (!isExpanded) {
+        el.classList.add('expanded');
+        content.classList.add('show');
+      }
+    }
+
+    function showSettingsSheet(type) {
+      document.getElementById('ai-voice-options').style.display = type === 'ai-voice' ? 'flex' : 'none';
+      document.getElementById('language-options').style.display = type === 'language' ? 'flex' : 'none';
+      document.getElementById('settings-sheet-title').textContent = type === 'ai-voice' ? 'AI Voice' : 'Language';
+      document.getElementById('settings-sheet-overlay').classList.add('show');
+    }
+
+    function hideSettingsSheet() {
+      document.getElementById('settings-sheet-overlay').classList.remove('show');
+    }
+
+    function selectOption(type, value, el) {
+      if (el.classList.contains('locked')) return;
+      
+      // 更新选中状态
+      el.parentElement.querySelectorAll('.sheet-option').forEach(opt => opt.classList.remove('selected'));
+      el.classList.add('selected');
+      
+      // 更新显示值
+      if (type === 'ai-voice') {
+        document.getElementById('current-ai-voice').textContent = value;
+      } else if (type === 'language') {
+        document.getElementById('current-language').textContent = value;
+      }
+      
+      // 关闭弹窗
+      setTimeout(hideSettingsSheet, 300);
+    }
+
     // ============ 背包Tab切换 ============
     function switchBackpackTab(tab, btn) {
       // 更新Tab按钮状态
@@ -6522,6 +7714,11 @@
 
     // 页面导航
     function navigateTo(pageId) {
+      // 记录进入通知页前的页面
+      if (pageId === 'notifications-page' && currentPage !== 'notifications-page') {
+        previousPage = currentPage;
+      }
+
       // 更新页面列表高亮
       document.querySelectorAll('.page-list-item').forEach(item => {
         item.classList.remove('active');
@@ -7330,7 +8527,16 @@
 
 
     // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', initCarousel);
+    document.addEventListener('DOMContentLoaded', function() {
+      initCarousel();
+      updateNotificationDots();
+    });
+
+    // 演示功能 - 在控制台可用
+    window.demoXP = () => showXPFloat(15);
+    window.demoLevelUp = () => showLevelUpModal();
+    window.demoBadge = () => showBadgeModal();
+    window.demoSequence = () => demoRewardSequence();
   </script>
 
 </body>
