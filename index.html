@@ -5332,6 +5332,168 @@
       gap: 8px;
     }
 
+    /* ============ Today XP Detail Sheet ============ */
+    .xp-detail-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 350;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .xp-detail-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .xp-detail-sheet {
+      background: white;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      max-height: 55%;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .xp-detail-overlay.show .xp-detail-sheet {
+      transform: translateY(0);
+    }
+
+    .xp-detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid #F0F0F0;
+      flex-shrink: 0;
+    }
+    .xp-detail-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+    }
+    .xp-detail-close {
+      background: rgba(0,0,0,0.08);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .xp-detail-content {
+      padding: 12px 16px 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .xp-detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .xp-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: #F9FAFB;
+      border-radius: 10px;
+    }
+    .xp-detail-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .xp-detail-item-icon.photo { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
+    .xp-detail-item-icon.species { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
+    .xp-detail-item-icon.task { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+    .xp-detail-item-icon.streak { background: linear-gradient(135deg, #FEE2E2, #FECACA); }
+    .xp-detail-item-icon.art { background: linear-gradient(135deg, #E9D5FF, #D8B4FE); }
+
+    .xp-detail-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .xp-detail-item-action {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+    .xp-detail-item-desc {
+      font-size: 11px;
+      color: #888;
+      margin-top: 1px;
+    }
+    .xp-detail-item-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #22C55E;
+      flex-shrink: 0;
+    }
+
+    .xp-detail-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, #22C55E, #16A34A);
+      border-radius: 12px;
+      color: white;
+    }
+    .xp-detail-total-label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .xp-detail-total-value {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .xp-detail-tip {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #F0F9FF;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .xp-detail-tip-icon {
+      font-size: 16px;
+    }
+    .xp-detail-tip-text {
+      font-size: 12px;
+      color: #0369A1;
+      line-height: 1.3;
+    }
+
+    .today-xp {
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .today-xp:active {
+      transform: scale(0.95);
+    }
+
     .sheet-option {
       display: flex;
       align-items: center;
@@ -6348,7 +6510,7 @@
               </div>
 
               <!-- 今日XP获得 -->
-              <div class="today-xp">
+              <div class="today-xp" onclick="showTodayXPDetail()">
                 <span class="today-xp-label">Today</span>
                 <span class="today-xp-value">+85 XP</span>
               </div>
@@ -6424,6 +6586,73 @@
                 <span>📤</span>
                 <span>Share My Journey</span>
               </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== Today XP Detail Sheet ========== -->
+        <div class="xp-detail-overlay" id="xp-detail-overlay" onclick="hideTodayXPDetail()">
+          <div class="xp-detail-sheet" onclick="event.stopPropagation()">
+            <div class="xp-detail-header">
+              <div class="xp-detail-title">
+                <span>✨</span>
+                <span>Today's XP</span>
+              </div>
+              <button class="xp-detail-close" onclick="hideTodayXPDetail()">✕</button>
+            </div>
+            <div class="xp-detail-content">
+              <div class="xp-detail-list">
+                <div class="xp-detail-item">
+                  <div class="xp-detail-item-icon photo">📸</div>
+                  <div class="xp-detail-item-info">
+                    <div class="xp-detail-item-action">Took 3 photos</div>
+                    <div class="xp-detail-item-desc">2 XP each</div>
+                  </div>
+                  <div class="xp-detail-item-value">+6 XP</div>
+                </div>
+                <div class="xp-detail-item">
+                  <div class="xp-detail-item-icon species">🦋</div>
+                  <div class="xp-detail-item-info">
+                    <div class="xp-detail-item-action">Found 2 new species</div>
+                    <div class="xp-detail-item-desc">Butterfly, Dragonfly</div>
+                  </div>
+                  <div class="xp-detail-item-value">+30 XP</div>
+                </div>
+                <div class="xp-detail-item">
+                  <div class="xp-detail-item-icon task">⭐</div>
+                  <div class="xp-detail-item-info">
+                    <div class="xp-detail-item-action">Completed 2 tasks</div>
+                    <div class="xp-detail-item-desc">Find a flower, Spot insect</div>
+                  </div>
+                  <div class="xp-detail-item-value">+35 XP</div>
+                </div>
+                <div class="xp-detail-item">
+                  <div class="xp-detail-item-icon streak">🔥</div>
+                  <div class="xp-detail-item-info">
+                    <div class="xp-detail-item-action">Daily streak bonus</div>
+                    <div class="xp-detail-item-desc">7 days in a row!</div>
+                  </div>
+                  <div class="xp-detail-item-value">+10 XP</div>
+                </div>
+                <div class="xp-detail-item">
+                  <div class="xp-detail-item-icon art">🎨</div>
+                  <div class="xp-detail-item-info">
+                    <div class="xp-detail-item-action">Created 1 artwork</div>
+                    <div class="xp-detail-item-desc">Ghibli style</div>
+                  </div>
+                  <div class="xp-detail-item-value">+4 XP</div>
+                </div>
+              </div>
+              
+              <div class="xp-detail-total">
+                <span class="xp-detail-total-label">Total Today</span>
+                <span class="xp-detail-total-value">+85 XP</span>
+              </div>
+              
+              <div class="xp-detail-tip">
+                <span class="xp-detail-tip-icon">💡</span>
+                <span class="xp-detail-tip-text">Keep exploring! You're 520 XP away from Level 6!</span>
+              </div>
             </div>
           </div>
         </div>
@@ -7829,6 +8058,15 @@
 
     function hideSettingsSheet() {
       document.getElementById('settings-sheet-overlay').classList.remove('show');
+    }
+
+    // ============ Today XP Detail ============
+    function showTodayXPDetail() {
+      document.getElementById('xp-detail-overlay').classList.add('show');
+    }
+    
+    function hideTodayXPDetail() {
+      document.getElementById('xp-detail-overlay').classList.remove('show');
     }
 
     function selectOption(type, value, el) {
