@@ -128,7 +128,7 @@
     }
 
     .device-screen {
-      width: 640px;
+      width: 800px;
       height: 480px;
       background: url('icons/bg.png') center center / cover no-repeat;
       border-radius: 12px;
@@ -379,8 +379,8 @@
 
     .card {
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       background: linear-gradient(180deg, #F5EDE4 0%, #E8DFD4 100%);
       border-radius: 28px;
       display: flex;
@@ -398,12 +398,12 @@
 
     /* 卡片位置 - 只显示3张,两侧露出一部分 */
     .card.pos-far-left {
-      transform: translateX(-420px) scale(0.7);
+      transform: translateX(-480px) scale(0.7);
       opacity: 0.4;
       z-index: 1;
     }
     .card.pos-left {
-      transform: translateX(-230px) scale(0.85);
+      transform: translateX(-260px) scale(0.85);
       opacity: 0.9;
       z-index: 2;
     }
@@ -411,8 +411,8 @@
       transform: translateX(0) scale(1);
       opacity: 1;
       z-index: 5;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       /* 选中卡片变色 - 金黄色调 + 更强阴影 */
       background: linear-gradient(180deg, #FFE4A0 0%, #FFCC50 100%);
       box-shadow: 
@@ -421,12 +421,12 @@
         0 0 0 4px rgba(255, 200, 50, 0.3);
     }
     .card.pos-right {
-      transform: translateX(230px) scale(0.85);
+      transform: translateX(260px) scale(0.85);
       opacity: 0.9;
       z-index: 2;
     }
     .card.pos-far-right {
-      transform: translateX(420px) scale(0.7);
+      transform: translateX(480px) scale(0.7);
       opacity: 0.4;
       z-index: 1;
     }
@@ -1237,7 +1237,7 @@
       height: 100%;
       position: relative;
       /* 整个页面都是取景器 */
-      background: url('https://images.unsplash.com/photo-1518882605630-8eb582f64194?w=640&h=480&fit=crop') center/cover;
+      background: url('https://images.unsplash.com/photo-1518882605630-8eb582f64194?w=800&h=480&fit=crop') center/cover;
       overflow: hidden;
     }
 
@@ -1250,10 +1250,10 @@
       pointer-events: none;
       z-index: 10;
     }
-    .viewfinder-corner.top-left { top: 60px; left: 80px; border-right: none; border-bottom: none; border-radius: 4px 0 0 0; }
-    .viewfinder-corner.top-right { top: 60px; right: 80px; border-left: none; border-bottom: none; border-radius: 0 4px 0 0; }
-    .viewfinder-corner.bottom-left { bottom: 90px; left: 80px; border-right: none; border-top: none; border-radius: 0 0 0 4px; }
-    .viewfinder-corner.bottom-right { bottom: 90px; right: 80px; border-left: none; border-top: none; border-radius: 0 0 4px 0; }
+    .viewfinder-corner.top-left { top: 60px; left: 160px; border-right: none; border-bottom: none; border-radius: 4px 0 0 0; }
+    .viewfinder-corner.top-right { top: 60px; right: 160px; border-left: none; border-bottom: none; border-radius: 0 4px 0 0; }
+    .viewfinder-corner.bottom-left { bottom: 90px; left: 160px; border-right: none; border-top: none; border-radius: 0 0 0 4px; }
+    .viewfinder-corner.bottom-right { bottom: 90px; right: 160px; border-left: none; border-top: none; border-radius: 0 0 4px 0; }
 
     /* 顶部工具栏 - 透明无背景 */
     .camera-top-bar {
@@ -3537,14 +3537,14 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 56px 20px 16px;
+      padding: 56px 24px 16px;
       position: relative;
     }
 
     .backpack-back-btn {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.5);
       border: none;
       border-radius: 18px;
@@ -3563,18 +3563,18 @@
     /* Tab栏 */
     .backpack-tabs {
       display: flex;
-      gap: 6px;
-      margin-bottom: 14px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .backpack-tab {
       flex: 1;
       background: rgba(0, 0, 0, 0.25);
       border: none;
-      border-radius: 12px;
-      padding: 10px 6px;
+      border-radius: 14px;
+      padding: 12px 8px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: white;
       cursor: pointer;
@@ -3594,7 +3594,7 @@
       overflow-y: auto;
     }
 
-    /* 相册网格 */
+    /* 相册网格 - 3列 */
     .album-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -3609,7 +3609,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 40px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.12);
       transition: all 0.2s;
     }
@@ -3637,7 +3637,7 @@
     /* 故事网格 */
     .stories-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
     .story-card {
@@ -3650,17 +3650,17 @@
     }
     .story-card:hover { transform: scale(1.02); }
     .story-card-cover {
-      aspect-ratio: 4/3;
+      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
+      font-size: 42px;
     }
     .story-card-info {
-      padding: 10px;
+      padding: 8px 10px;
     }
     .story-card-title {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: #333;
       margin-bottom: 2px;
@@ -3669,7 +3669,7 @@
       text-overflow: ellipsis;
     }
     .story-card-meta {
-      font-size: 10px;
+      font-size: 9px;
       color: #888;
     }
 
@@ -3721,36 +3721,36 @@
     .badge-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
 
-    .badge-item {
+    .badge-grid .badge-item {
       background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
       border-radius: 16px;
-      padding: 16px 12px;
+      padding: 18px 12px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
       transition: all 0.2s;
     }
-    .badge-item:hover { transform: scale(1.03); }
-    .badge-item.locked {
+    .badge-grid .badge-item:hover { transform: scale(1.03); }
+    .badge-grid .badge-item.locked {
       background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);
       opacity: 0.6;
       box-shadow: none;
     }
 
-    .badge-icon { font-size: 32px; }
-    .badge-name {
-      font-size: 11px;
+    .badge-grid .badge-icon { font-size: 44px; }
+    .badge-grid .badge-name {
+      font-size: 12px;
       font-weight: 600;
       color: #5D4E3A;
       text-align: center;
     }
-    .badge-item.locked .badge-name { color: #444; }
+    .badge-grid .badge-item.locked .badge-name { color: #444; }
 
     /* ============ Species List 图鉴列表页 ============ */
     #species-list-page {
@@ -3762,14 +3762,14 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 56px 20px 16px;
+      padding: 56px 24px 16px;
       position: relative;
     }
 
     .species-list-back-btn {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.5);
       border: none;
       border-radius: 18px;
@@ -4018,16 +4018,16 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 56px 16px 16px;
-      gap: 12px;
+      padding: 56px 24px 16px;
+      gap: 10px;
       overflow-y: auto;
       position: relative;
     }
 
     .explorer-back-btn {
       position: absolute;
-      top: 12px;
-      left: 16px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.4);
       border: none;
       border-radius: 18px;
@@ -4051,11 +4051,11 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      margin-top: 12px;
-      padding: 14px;
+      margin-top: 8px;
+      padding: 12px;
       background: linear-gradient(135deg, #5D9E5A 0%, #4A8A47 100%);
       border: none;
-      border-radius: 14px;
+      border-radius: 12px;
       font-family: inherit;
       font-size: 14px;
       font-weight: 600;
@@ -4071,15 +4071,15 @@
     /* 身份卡 */
     .explorer-identity-card {
       background: linear-gradient(135deg, #FFF8E7 0%, #FDF5E6 100%);
-      border-radius: 20px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 18px 20px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       position: relative;
     }
 
     .explorer-profile {
       display: flex;
-      gap: 16px;
+      gap: 18px;
     }
 
     .explorer-avatar-large {
@@ -4108,8 +4108,8 @@
       color: white;
       font-size: 11px;
       font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 12px;
+      padding: 3px 7px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
@@ -4158,7 +4158,7 @@
       background: rgba(0,0,0,0.1);
       border-radius: 4px;
       overflow: hidden;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .xp-progress-fill {
@@ -4170,8 +4170,8 @@
 
     .today-xp {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 14px;
+      right: 16px;
       background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
       color: white;
       padding: 6px 12px;
@@ -4195,33 +4195,33 @@
     /* 统计数据 */
     .explorer-stats {
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
 
     .stat-item {
       flex: 1;
       background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
-      border-radius: 14px;
-      padding: 12px 8px;
+      border-radius: 12px;
+      padding: 10px 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
     .stat-icon {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .stat-value {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       color: #333;
     }
 
     .stat-label {
-      font-size: 10px;
+      font-size: 9px;
       color: #888;
       text-transform: uppercase;
     }
@@ -4229,8 +4229,8 @@
     /* 徽章展示 */
     .explorer-badges-section {
       background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
-      border-radius: 16px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 10px 12px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
@@ -4238,11 +4238,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #5D4E3A;
     }
@@ -4250,7 +4250,7 @@
     .see-all-btn {
       background: none;
       border: none;
-      font-size: 12px;
+      font-size: 11px;
       color: #8B5A2B;
       font-weight: 600;
       cursor: pointer;
@@ -4258,7 +4258,7 @@
 
     .badges-showcase {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       overflow-x: auto;
       padding-bottom: 4px;
     }
@@ -4268,14 +4268,14 @@
     }
 
     .badge-item {
-      flex: 0 0 80px;
+      flex: 0 0 90px;
       background: linear-gradient(180deg, #F5F5F5 0%, #E8E8E8 100%);
       border-radius: 12px;
-      padding: 10px 8px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       position: relative;
     }
 
@@ -4286,14 +4286,14 @@
     .badge-item.new::after {
       content: 'NEW';
       position: absolute;
-      top: -6px;
-      right: -6px;
+      top: -5px;
+      right: -5px;
       background: #EF4444;
       color: white;
-      font-size: 8px;
+      font-size: 7px;
       font-weight: 700;
-      padding: 2px 5px;
-      border-radius: 6px;
+      padding: 2px 4px;
+      border-radius: 5px;
     }
 
     .badge-item.locked {
@@ -4344,12 +4344,13 @@
     /* 下一个目标 */
     .next-goal-section {
       margin-top: auto;
+      padding-top: 8px;
     }
 
     .next-goal-card {
       background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-      border-radius: 16px;
-      padding: 14px 16px;
+      border-radius: 14px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -4357,7 +4358,7 @@
     }
 
     .goal-icon {
-      font-size: 32px;
+      font-size: 28px;
     }
 
     .goal-info {
@@ -4365,19 +4366,19 @@
     }
 
     .goal-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: white;
     }
 
     .goal-desc {
-      font-size: 12px;
+      font-size: 11px;
       color: rgba(255,255,255,0.85);
       margin-top: 2px;
     }
 
     .goal-arrow {
-      font-size: 18px;
+      font-size: 16px;
       color: rgba(255,255,255,0.7);
     }
 
@@ -4391,15 +4392,15 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 56px 16px 16px;
+      padding: 56px 20px 16px;
       gap: 12px;
       overflow-y: auto;
     }
 
     .level-guide-back-btn {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.4);
       border: none;
       border-radius: 18px;
@@ -4757,8 +4758,8 @@
     /* Explorer页通知按钮 */
     .explorer-notification-btn {
       position: absolute;
-      top: 12px;
-      right: 16px;
+      top: 14px;
+      right: 20px;
       width: 40px;
       height: 40px;
       background: rgba(0, 0, 0, 0.4);
@@ -4794,14 +4795,14 @@
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 56px 16px 20px;
+      padding: 56px 20px 20px;
       overflow-y: auto;
     }
 
     .notifications-back-btn {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.4);
       border: none;
       border-radius: 18px;
@@ -4958,14 +4959,14 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 56px 20px 16px;
+      padding: 56px 24px 16px;
       position: relative;
     }
 
     .settings-back-btn {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 14px;
+      left: 20px;
       background: rgba(0, 0, 0, 0.5);
       border: none;
       border-radius: 18px;
@@ -5553,6 +5554,493 @@
       padding: 4px 8px;
       border-radius: 8px;
     }
+
+    /* ============ Wi-Fi设置页 ============ */
+    .wifi-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 24px 16px;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .wifi-back-btn {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+    }
+
+    .wifi-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .wifi-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .wifi-toggle-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .wifi-toggle-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .wifi-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wifi-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      padding-left: 4px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .wifi-network-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .wifi-network-card:active {
+      transform: scale(0.98);
+    }
+    .wifi-network-card.connected {
+      background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+    }
+
+    .wifi-network-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .wifi-network-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .wifi-network-status {
+      font-size: 11px;
+      color: #059669;
+      font-weight: 500;
+    }
+
+    .wifi-network-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wifi-lock {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .wifi-signal {
+      font-size: 16px;
+    }
+    .wifi-signal.full { opacity: 1; }
+    .wifi-signal.medium { opacity: 0.7; }
+    .wifi-signal.weak { opacity: 0.4; }
+
+    .wifi-network-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Wi-Fi密码弹窗 */
+    .wifi-password-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 350;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .wifi-password-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .wifi-password-modal {
+      background: white;
+      border-radius: 20px;
+      width: 85%;
+      max-width: 320px;
+      overflow: hidden;
+      transform: scale(0.9);
+      transition: transform 0.25s;
+    }
+    .wifi-password-overlay.show .wifi-password-modal {
+      transform: scale(1);
+    }
+
+    .wifi-password-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+
+    .wifi-password-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .wifi-password-close {
+      background: rgba(0,0,0,0.08);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .wifi-password-content {
+      padding: 20px;
+    }
+
+    .wifi-password-input-group {
+      margin-bottom: 16px;
+    }
+
+    .wifi-password-input-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .wifi-password-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #E5E7EB;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .wifi-password-input:focus {
+      outline: none;
+      border-color: #3B82F6;
+    }
+
+    .wifi-connect-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .wifi-connect-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ============ About Device页 ============ */
+    .about-device-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 24px 16px;
+      position: relative;
+    }
+
+    .about-device-back-btn {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+    }
+
+    .about-device-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .about-device-content {
+      flex: 1;
+    }
+
+    .about-device-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 4px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .about-device-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .about-device-row:last-child {
+      border-bottom: none;
+    }
+
+    .about-device-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .about-device-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      text-align: right;
+      max-width: 60%;
+      word-break: break-all;
+    }
+
+    /* ============ System Update页 ============ */
+    .system-update-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 24px 16px;
+      position: relative;
+    }
+
+    .system-update-back-btn {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 20;
+    }
+
+    .system-update-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .system-update-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .update-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .system-update-icon {
+      font-size: 64px;
+      margin-bottom: 8px;
+    }
+
+    .system-update-status {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .system-update-version {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* 检查动画 */
+    .update-spinner {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 8px;
+    }
+
+    .spinner-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 4px solid rgba(255,255,255,0.2);
+      border-top-color: #3B82F6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .spinner-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.9); }
+    }
+
+    /* 有更新可用 */
+    .update-available-icon {
+      font-size: 64px;
+      margin-bottom: 8px;
+      animation: bounce 0.6s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .update-changelog {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .changelog-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+    }
+
+    .changelog-item {
+      font-size: 11px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    .system-update-btn {
+      margin-top: 24px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.2s;
+    }
+    .system-update-btn:active {
+      transform: scale(0.98);
+    }
+    .system-update-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .system-update-btn.update-now {
+      background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -5632,6 +6120,18 @@
         <div class="page-list-item" onclick="navigateTo('settings-page')">
           <span class="icon">⚙️</span>
           <span>设置</span>
+        </div>
+        <div class="page-list-item" onclick="navigateTo('wifi-page')" style="padding-left: 28px;">
+          <span class="icon">📶</span>
+          <span>Wi-Fi</span>
+        </div>
+        <div class="page-list-item" onclick="navigateTo('about-device-page')" style="padding-left: 28px;">
+          <span class="icon">ℹ️</span>
+          <span>关于本机</span>
+        </div>
+        <div class="page-list-item" onclick="navigateTo('system-update-page')" style="padding-left: 28px;">
+          <span class="icon">🔄</span>
+          <span>系统更新</span>
         </div>
         <div class="page-list-item" onclick="navigateTo('notifications-page')">
           <span class="icon">🔔</span>
@@ -5795,7 +6295,7 @@
             </button>
 
             <!-- 全屏照片 -->
-            <img class="preview-photo-fullscreen" src="https://picsum.photos/640/480?random=10" alt="Photo">
+            <img class="preview-photo-fullscreen" src="https://picsum.photos/800/480?random=10" alt="Photo">
 
             <!-- AI提示 -->
             <div class="preview-ai-hint">✨ Press AI to explore</div>
@@ -6997,6 +7497,90 @@
             </button>
 
             <div class="settings-list">
+              <!-- 网络组 -->
+              <div class="settings-group">
+                <div class="settings-group-title">Network</div>
+                <div class="settings-group-card">
+                  <div class="settings-item" onclick="navigateTo('wifi-page')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon blue">📶</div>
+                      <div>
+                        <div class="settings-label">Wi-Fi</div>
+                        <div class="settings-value" id="current-wifi">HUAWEI-Iris</div>
+                      </div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon green">📡</div>
+                      <div class="settings-label">Mobile Data</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 显示组 -->
+              <div class="settings-group">
+                <div class="settings-group-title">Display</div>
+                <div class="settings-group-card">
+                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
+                    <div class="settings-item-left">
+                      <div class="settings-icon yellow">🔆</div>
+                      <div class="settings-label">Brightness</div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                  <div class="settings-expand-content">
+                    <div class="brightness-slider-full">
+                      <span>🌑</span>
+                      <div class="slider-track-full">
+                        <div class="slider-fill" style="width: 70%;"></div>
+                        <div class="slider-thumb" style="left: 70%;"></div>
+                      </div>
+                      <span>☀️</span>
+                    </div>
+                  </div>
+                  <div class="settings-item" onclick="showSettingsSheet('screen-timeout')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon purple">⏱️</div>
+                      <div>
+                        <div class="settings-label">Screen Timeout</div>
+                        <div class="settings-value" id="current-timeout">5 minutes</div>
+                      </div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 声音组 -->
+              <div class="settings-group">
+                <div class="settings-group-title">Sound</div>
+                <div class="settings-group-card">
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon blue">🔊</div>
+                      <div class="settings-label">Volume</div>
+                    </div>
+                    <div class="settings-slider">
+                      <div class="slider-track">
+                        <div class="slider-fill" style="width: 50%;"></div>
+                      </div>
+                      <span class="slider-value">50%</span>
+                    </div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon orange">🎵</div>
+                      <div class="settings-label">Sound Effects</div>
+                    </div>
+                    <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                  </div>
+                </div>
+              </div>
+
               <!-- AI组 -->
               <div class="settings-group">
                 <div class="settings-group-title">AI Assistant</div>
@@ -7020,56 +7604,6 @@
                       </div>
                     </div>
                     <span class="settings-chevron">›</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 声音组 -->
-              <div class="settings-group">
-                <div class="settings-group-title">Sound</div>
-                <div class="settings-group-card">
-                  <div class="settings-item">
-                    <div class="settings-item-left">
-                      <div class="settings-icon orange">🎵</div>
-                      <div class="settings-label">Sound Effects</div>
-                    </div>
-                    <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
-                  </div>
-                  <div class="settings-item">
-                    <div class="settings-item-left">
-                      <div class="settings-icon blue">🔊</div>
-                      <div class="settings-label">Volume</div>
-                    </div>
-                    <div class="settings-slider">
-                      <div class="slider-track">
-                        <div class="slider-fill" style="width: 50%;"></div>
-                      </div>
-                      <span class="slider-value">50%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 显示组 -->
-              <div class="settings-group">
-                <div class="settings-group-title">Display</div>
-                <div class="settings-group-card">
-                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
-                    <div class="settings-item-left">
-                      <div class="settings-icon purple">🔆</div>
-                      <div class="settings-label">Brightness</div>
-                    </div>
-                    <span class="settings-chevron">›</span>
-                  </div>
-                  <div class="settings-expand-content">
-                    <div class="brightness-slider-full">
-                      <span>🌑</span>
-                      <div class="slider-track-full">
-                        <div class="slider-fill" style="width: 70%;"></div>
-                        <div class="slider-thumb" style="left: 70%;"></div>
-                      </div>
-                      <span>☀️</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -7124,22 +7658,6 @@
                       <div class="battery-info">Estimated 4h 30min remaining</div>
                     </div>
                   </div>
-
-                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
-                    <div class="settings-item-left">
-                      <div class="settings-icon gray">ℹ️</div>
-                      <div class="settings-label">Device Info</div>
-                    </div>
-                    <span class="settings-chevron">›</span>
-                  </div>
-                  <div class="settings-expand-content">
-                    <div class="device-info-detail">
-                      <div class="info-row"><span>Model</span><span>AI Explorer V1</span></div>
-                      <div class="info-row"><span>Serial</span><span>AEX-2024-001234</span></div>
-                      <div class="info-row"><span>Firmware</span><span>v1.2.3</span></div>
-                      <div class="info-row"><span>WiFi MAC</span><span>A1:B2:C3:D4:E5</span></div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -7147,20 +7665,92 @@
               <div class="settings-group">
                 <div class="settings-group-title">About</div>
                 <div class="settings-group-card">
-                  <div class="settings-item expandable" onclick="toggleSettingsExpand(this)">
+                  <div class="settings-item" onclick="navigateTo('about-device-page')">
                     <div class="settings-item-left">
-                      <div class="settings-icon blue">🔭</div>
-                      <div class="settings-label">About AI Explorer</div>
+                      <div class="settings-icon gray">ℹ️</div>
+                      <div class="settings-label">About Device</div>
                     </div>
                     <span class="settings-chevron">›</span>
                   </div>
-                  <div class="settings-expand-content">
-                    <div class="about-detail">
-                      <div class="about-logo">🔭</div>
-                      <div class="about-name">AI Explorer</div>
-                      <div class="about-version">Version 1.0.0</div>
-                      <div class="about-tagline">The AI camera for young explorers</div>
-                      <div class="about-copyright">© 2024 AI Explorer Inc.</div>
+                  <div class="settings-item" onclick="navigateTo('system-update-page')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon blue">🔄</div>
+                      <div class="settings-label">System Update</div>
+                    </div>
+                    <span class="settings-chevron">›</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== Wi-Fi设置页 ========== -->
+        <div id="wifi-page" class="page page-blur-bg">
+          <div class="wifi-container">
+            <button class="wifi-back-btn" onclick="navigateTo('settings-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+            
+            <div class="wifi-header">
+              <span>📶</span>
+              <span>Wi-Fi</span>
+            </div>
+
+            <div class="wifi-content">
+              <!-- Wi-Fi开关 -->
+              <div class="wifi-toggle-card">
+                <div class="wifi-toggle-left">
+                  <span class="wifi-toggle-label">Wi-Fi</span>
+                </div>
+                <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+              </div>
+
+              <!-- 当前连接 -->
+              <div class="wifi-section">
+                <div class="wifi-section-title">Current Network</div>
+                <div class="wifi-network-card connected">
+                  <div class="wifi-network-info">
+                    <span class="wifi-network-name">HUAWEI-Iris</span>
+                    <span class="wifi-network-status">Connected</span>
+                  </div>
+                  <div class="wifi-network-icons">
+                    <span class="wifi-lock">🔒</span>
+                    <span class="wifi-signal full">📶</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 可用网络 -->
+              <div class="wifi-section">
+                <div class="wifi-section-title">Available Networks</div>
+                <div class="wifi-network-list">
+                  <div class="wifi-network-card" onclick="showWifiPasswordModal('s_WiFi5')">
+                    <div class="wifi-network-info">
+                      <span class="wifi-network-name">s_WiFi5</span>
+                    </div>
+                    <div class="wifi-network-icons">
+                      <span class="wifi-lock">🔒</span>
+                      <span class="wifi-signal full">📶</span>
+                    </div>
+                  </div>
+                  <div class="wifi-network-card" onclick="showWifiPasswordModal('HUAWEI-3B1406')">
+                    <div class="wifi-network-info">
+                      <span class="wifi-network-name">HUAWEI-3B1406</span>
+                    </div>
+                    <div class="wifi-network-icons">
+                      <span class="wifi-lock">🔒</span>
+                      <span class="wifi-signal medium">📶</span>
+                    </div>
+                  </div>
+                  <div class="wifi-network-card" onclick="showWifiPasswordModal('31406_WiFi5')">
+                    <div class="wifi-network-info">
+                      <span class="wifi-network-name">31406_WiFi5</span>
+                    </div>
+                    <div class="wifi-network-icons">
+                      <span class="wifi-lock">🔒</span>
+                      <span class="wifi-signal weak">📶</span>
                     </div>
                   </div>
                 </div>
@@ -7169,7 +7759,117 @@
           </div>
         </div>
 
-        <!-- ========== Settings底部弹窗 - AI Voice ========== -->
+        <!-- ========== Wi-Fi密码输入弹窗 ========== -->
+        <div class="wifi-password-overlay" id="wifi-password-overlay" onclick="hideWifiPasswordModal()">
+          <div class="wifi-password-modal" onclick="event.stopPropagation()">
+            <div class="wifi-password-header">
+              <span class="wifi-password-title" id="wifi-password-title">Connect to s_WiFi5</span>
+              <button class="wifi-password-close" onclick="hideWifiPasswordModal()">✕</button>
+            </div>
+            <div class="wifi-password-content">
+              <div class="wifi-password-input-group">
+                <label>Password</label>
+                <input type="password" class="wifi-password-input" placeholder="Enter password">
+              </div>
+              <button class="wifi-connect-btn" onclick="hideWifiPasswordModal()">Connect</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== About Device页 ========== -->
+        <div id="about-device-page" class="page page-blur-bg">
+          <div class="about-device-container">
+            <button class="about-device-back-btn" onclick="navigateTo('settings-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+            
+            <div class="about-device-header">
+              <span>ℹ️</span>
+              <span>About Device</span>
+            </div>
+
+            <div class="about-device-content">
+              <div class="about-device-card">
+                <div class="about-device-row">
+                  <span class="about-device-label">Name</span>
+                  <span class="about-device-value">AI Explorer</span>
+                </div>
+                <div class="about-device-row">
+                  <span class="about-device-label">Model</span>
+                  <span class="about-device-value">AE-S1</span>
+                </div>
+                <div class="about-device-row">
+                  <span class="about-device-label">Version</span>
+                  <span class="about-device-value">2.0.4_251020141930</span>
+                </div>
+                <div class="about-device-row">
+                  <span class="about-device-label">SN</span>
+                  <span class="about-device-value">SL01AC6B50244229477</span>
+                </div>
+                <div class="about-device-row">
+                  <span class="about-device-label">Storage</span>
+                  <span class="about-device-value">12.3GB (32GB)</span>
+                </div>
+                <div class="about-device-row">
+                  <span class="about-device-label">IMEI</span>
+                  <span class="about-device-value">865436077652634</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== System Update页 ========== -->
+        <div id="system-update-page" class="page page-blur-bg">
+          <div class="system-update-container">
+            <button class="system-update-back-btn" onclick="navigateTo('settings-page')">
+              <span>←</span>
+              <span>Back</span>
+            </button>
+            
+            <div class="system-update-header">
+              <span>🔄</span>
+              <span>System Update</span>
+            </div>
+
+            <div class="system-update-content">
+              <!-- 默认状态：已是最新 -->
+              <div class="update-state" id="update-state-current">
+                <div class="system-update-icon">🌐</div>
+                <div class="system-update-status">Your system is up to date</div>
+                <div class="system-update-version">Current version: 2.0.4</div>
+              </div>
+
+              <!-- 检查中状态 -->
+              <div class="update-state" id="update-state-checking" style="display: none;">
+                <div class="update-spinner">
+                  <div class="spinner-ring"></div>
+                  <div class="spinner-icon">🔍</div>
+                </div>
+                <div class="system-update-status">Checking for updates...</div>
+                <div class="system-update-version">Please wait</div>
+              </div>
+
+              <!-- 有更新可用状态 -->
+              <div class="update-state" id="update-state-available" style="display: none;">
+                <div class="update-available-icon">🎉</div>
+                <div class="system-update-status">New version available!</div>
+                <div class="system-update-version">Version 2.1.0</div>
+                <div class="update-changelog">
+                  <div class="changelog-title">What's new:</div>
+                  <div class="changelog-item">• Improved AI recognition</div>
+                  <div class="changelog-item">• New exploration badges</div>
+                  <div class="changelog-item">• Bug fixes & performance</div>
+                </div>
+              </div>
+
+              <button class="system-update-btn" id="system-update-btn" onclick="handleUpdateAction()">Check for Updates</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== Settings底部弹窗 ========== -->
         <div class="settings-sheet-overlay" id="settings-sheet-overlay" onclick="hideSettingsSheet()">
           <div class="settings-sheet" onclick="event.stopPropagation()">
             <div class="settings-sheet-header">
@@ -7242,6 +7942,34 @@
                   <div class="option-info">
                     <div class="option-name">中文</div>
                   </div>
+                  <span class="option-check">✓</span>
+                </div>
+              </div>
+
+              <!-- Screen Timeout选项 -->
+              <div class="settings-sheet-options" id="screen-timeout-options" style="display:none;">
+                <div class="sheet-option" onclick="selectOption('screen-timeout', '1 minute', this)">
+                  <div class="option-info"><div class="option-name">1 minute</div></div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('screen-timeout', '3 minutes', this)">
+                  <div class="option-info"><div class="option-name">3 minutes</div></div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option selected" onclick="selectOption('screen-timeout', '5 minutes', this)">
+                  <div class="option-info"><div class="option-name">5 minutes</div></div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('screen-timeout', '10 minutes', this)">
+                  <div class="option-info"><div class="option-name">10 minutes</div></div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('screen-timeout', '15 minutes', this)">
+                  <div class="option-info"><div class="option-name">15 minutes</div></div>
+                  <span class="option-check">✓</span>
+                </div>
+                <div class="sheet-option" onclick="selectOption('screen-timeout', '20 minutes', this)">
+                  <div class="option-info"><div class="option-name">20 minutes</div></div>
                   <span class="option-check">✓</span>
                 </div>
               </div>
@@ -8052,12 +8780,92 @@
     function showSettingsSheet(type) {
       document.getElementById('ai-voice-options').style.display = type === 'ai-voice' ? 'flex' : 'none';
       document.getElementById('language-options').style.display = type === 'language' ? 'flex' : 'none';
-      document.getElementById('settings-sheet-title').textContent = type === 'ai-voice' ? 'AI Voice' : 'Language';
+      document.getElementById('screen-timeout-options').style.display = type === 'screen-timeout' ? 'flex' : 'none';
+      
+      const titles = {
+        'ai-voice': 'AI Voice',
+        'language': 'Language',
+        'screen-timeout': 'Screen Timeout'
+      };
+      document.getElementById('settings-sheet-title').textContent = titles[type] || type;
       document.getElementById('settings-sheet-overlay').classList.add('show');
     }
 
     function hideSettingsSheet() {
       document.getElementById('settings-sheet-overlay').classList.remove('show');
+    }
+
+    // ============ Wi-Fi Password Modal ============
+    function showWifiPasswordModal(networkName) {
+      document.getElementById('wifi-password-title').textContent = 'Connect to ' + networkName;
+      document.getElementById('wifi-password-overlay').classList.add('show');
+    }
+
+    function hideWifiPasswordModal() {
+      document.getElementById('wifi-password-overlay').classList.remove('show');
+    }
+
+    // ============ System Update ============
+    let updateState = 'current'; // current, checking, available
+    
+    function handleUpdateAction() {
+      const btn = document.getElementById('system-update-btn');
+      
+      if (updateState === 'current') {
+        // 开始检查更新
+        updateState = 'checking';
+        btn.textContent = 'Checking...';
+        btn.disabled = true;
+        
+        // 显示检查状态
+        document.getElementById('update-state-current').style.display = 'none';
+        document.getElementById('update-state-checking').style.display = 'flex';
+        document.getElementById('update-state-available').style.display = 'none';
+        
+        // 模拟检查过程
+        setTimeout(() => {
+          // 显示有更新可用
+          updateState = 'available';
+          document.getElementById('update-state-checking').style.display = 'none';
+          document.getElementById('update-state-available').style.display = 'flex';
+          
+          btn.textContent = 'Update Now';
+          btn.disabled = false;
+          btn.classList.add('update-now');
+        }, 2500);
+        
+      } else if (updateState === 'available') {
+        // 开始更新
+        btn.textContent = 'Updating...';
+        btn.disabled = true;
+        
+        // 模拟更新过程
+        setTimeout(() => {
+          // 更新完成，回到最新状态
+          updateState = 'current';
+          document.getElementById('update-state-available').style.display = 'none';
+          document.getElementById('update-state-current').style.display = 'flex';
+          
+          // 更新版本号
+          document.querySelector('#update-state-current .system-update-version').textContent = 'Current version: 2.1.0';
+          
+          btn.textContent = 'Check for Updates';
+          btn.disabled = false;
+          btn.classList.remove('update-now');
+        }, 3000);
+      }
+    }
+
+    function resetUpdateState() {
+      updateState = 'current';
+      document.getElementById('update-state-current').style.display = 'flex';
+      document.getElementById('update-state-checking').style.display = 'none';
+      document.getElementById('update-state-available').style.display = 'none';
+      
+      const btn = document.getElementById('system-update-btn');
+      btn.textContent = 'Check for Updates';
+      btn.disabled = false;
+      btn.classList.remove('update-now');
     }
 
     // ============ Today XP Detail ============
@@ -8081,6 +8889,8 @@
         document.getElementById('current-ai-voice').textContent = value;
       } else if (type === 'language') {
         document.getElementById('current-language').textContent = value;
+      } else if (type === 'screen-timeout') {
+        document.getElementById('current-timeout').textContent = value;
       }
       
       // 关闭弹窗
