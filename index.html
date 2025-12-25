@@ -329,13 +329,42 @@
       align-items: center;
       padding: 0 14px;
       color: white;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       z-index: 100;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
-    .status-left { display: flex; gap: 8px; align-items: center; }
-    .status-right { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+    .status-left { 
+      display: flex; 
+      gap: 8px; 
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-right { 
+      display: flex; 
+      gap: 8px; 
+      align-items: center; 
+      font-size: 12px; 
+    }
+    .status-icon {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+    }
+    .status-battery {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .status-battery-percent {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-battery-icon {
+      font-size: 14px;
+    }
 
     /* 页面容器 */
     .page {
@@ -6187,11 +6216,18 @@
 
         <!-- 状态栏 -->
         <div class="status-bar">
-          <div class="status-left"><span>10:30</span></div>
+          <div class="status-left">
+            <span>10:30</span>
+            <span>Thu</span>
+            <span>Dec 25</span>
+          </div>
           <div class="status-right">
-            <span>📶</span>
-            <span>87%</span>
-            <span>🔋</span>
+            <img class="status-icon" src="icons/WIFI.png" alt="WiFi">
+            <img class="status-icon" src="icons/4G.png" alt="4G">
+            <div class="status-battery">
+              <span class="status-battery-percent">87%</span>
+              <span class="status-battery-icon">🔋</span>
+            </div>
           </div>
         </div>
 
